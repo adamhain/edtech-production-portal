@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="resources.html" class="nav-tab active">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Reference</p>
+      <h1>Policies &amp; <em>procedures.</em></h1>
+      <p class="hero-desc">Studio policies, procedures, and reference documents — file naming, workflow standards, and anything else the team needs to look up. Links open the source doc directly, so it's always the current version.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <!-- RESOURCE LIST — add a new .resource-item block for each doc.
+       Kept as plain links to the source (Google Docs, etc.) rather than
+       mirroring content here, so there's only ever one place to keep
+       these updated. -->
+  <div class="dash-card">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Policies &amp; Procedures</div>
+    </div>
+    <div class="resource-list">
+
+      <a class="resource-item" href="https://docs.google.com/document/d/1WIAwgwI5xhZAUT83-vvXY5dxjHAnZ-MzMFvBFJkjjLE/edit" target="_blank" rel="noopener">
+        <div class="resource-icon">📄</div>
+        <div class="resource-info">
+          <div class="resource-title">EdTech Project Folder Structure and Naming Conventions</div>
+          <div class="resource-meta">Google Doc — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <!-- Add more resources here, same structure as above. -->
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>

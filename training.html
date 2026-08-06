@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training & Roles — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab active">Training &amp; Roles</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Live data coming soon</span>
+      <span class="badge">May 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Training Program</p>
+      <p class="hero-desc">Role definitions, duties, and curated training resources for all 14 studio positions — with LinkedIn Learning courses and YouTube videos for each.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num accent">14</span><span class="stat-label">Studio Roles</span></div>
+      <div class="stat"><span class="stat-num accent">4</span><span class="stat-label">Team Members</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+  <div class="section-header">
+    <h2>Role Reference &amp; Training Resources</h2>
+    <span>Click any role to expand</span>
+  </div>
+
+  <div class="roles-grid">
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">01</span>
+        <div class="role-title-wrap"><div class="role-title">Director</div><div class="role-subtitle">Creative vision · Shot calling · Talent direction · Client communication</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Director holds creative and logistical authority over the entire shoot. They are the primary decision-maker on set and the main point of contact for communicating the client's vision to the crew.</p>
+        <div class="duties-grid">
+          <div class="duty">Meet with the client before the shoot to understand goals, tone, and key messages</div>
+          <div class="duty">Create or review the shot list and communicate it clearly to all crew before call time</div>
+          <div class="duty">Run the pre-shoot briefing, assigning each crew member their role</div>
+          <div class="duty">Call every shot during the shoot: angles, takes, retakes, pacing, and talent direction</div>
+          <div class="duty">Monitor the program monitor throughout to evaluate framing, lighting, and audio</div>
+          <div class="duty">Manage time on set actively — keep the shoot moving and flag if schedule slips</div>
+          <div class="duty">Conduct a post-shoot debrief with the client to confirm deliverables</div>
+          <div class="duty">Review rough edit before delivery and provide clear notes to the editor</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/creating-a-short-film-05-directing" target="_blank">Creating a Short Film: 05 Directing <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/making-a-short-film-start-to-finish" target="_blank">Making a Short Film: Start to Finish <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/diy-filmmaking-tips-weekly" target="_blank">DIY Filmmaking Tips Weekly <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/learning-cinematography-1-narrative-fundamentals" target="_blank">Learning Cinematography: 1 Narrative Fundamentals <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/learning-video-production-and-editing-3" target="_blank">Learning Video Production and Editing <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>YouTube</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=qFC75Gwl3sI" target="_blank">Hamish Hamilton: Multi Camera Directing <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=z1jDJurxNcI" target="_blank">In Focus: Multi-Camera Directing <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=7FXEUDBS9R0" target="_blank">The Basics of Multi-Cam Live Production <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=6UIrqGZxvZg" target="_blank">How to Succeed as a Live Multi-Camera Director <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=ha9KMXEgslo" target="_blank">Behind the Scenes: Multi-Camera Directing a Live Broadcast <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">02</span>
+        <div class="role-title-wrap"><div class="role-title">First Engineer</div><div class="role-subtitle">Technical Director · Blackmagic ATEM · Audio monitoring · System ops</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-li">LinkedIn Learning</span><span class="tag tag-gear">Gear</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The First Engineer is the hands-on operator of the Blackmagic ATEM switcher and the central technical authority on set. They ensure all systems are recording, all signals are clean, and all technical issues are caught in real time.</p>
+        <div class="duties-grid">
+          <div class="duty">Arrive early to power on and test all systems before the crew arrives</div>
+          <div class="duty">Run pre-shoot system check: camera feeds, audio meters, HyperDeck armed</div>
+          <div class="duty">Operate the ATEM switcher in real time on the Director's calls</div>
+          <div class="duty">Monitor all audio levels continuously and flag any clip or dropout</div>
+          <div class="duty">Confirm recording has started before every take</div>
+          <div class="duty">Troubleshoot signal loss, audio dropout, or switcher issues in real time</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/multi-camera-video-production-and-post" target="_blank">Multi-Camera Video Production and Post <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/learning-video-live-streaming" target="_blank">Learning Video Live Streaming <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-gear"></span>Blackmagic ATEM HD8 ISO</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=mYE3LSh2ZKY" target="_blank">ATEM Television Studio HD8 ISO & 4K8 Overview <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=9BNQPLwQGpk" target="_blank">ATEM Television Studio HD8 ISO — Full Review & Walkthrough <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=p2TJKAFdpx8" target="_blank">ATEM Software Control Tutorial (45-Min Masterclass) <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=lL8nUhP4FTQ" target="_blank">How to Download & Connect ATEM Software Control <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-gear"></span>Hollyland Solidcom C1 — Crew Comms</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=SolidcomC1Hub" target="_blank">Hollyland Tutorial Series — Solidcom C1 with Hub <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=SolidcomC1NoHub" target="_blank">Hollyland Tutorial Series — Solidcom C1 No Hub <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=SolidcomC1Pro" target="_blank">Solidcom C1 Pro Tutorial — Next-Level Team Talk <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>ATEM + Zoom Setup</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=ATEMZoomFull" target="_blank">Using ATEM Mini PRO with ZOOM — Full Setup + Tips <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=ATEMZoomComplete" target="_blank">How To Use the ATEM with Zoom — Complete Setup <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=ATEMWebcam" target="_blank">How to Use the ATEM Mini PRO/ISO as a Webcam for Zoom <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">03</span>
+        <div class="role-title-wrap"><div class="role-title">Remote QC Engineer</div><div class="role-subtitle">Program output monitoring · Audio QC · Timecode logging · Zoom monitoring</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Remote QC Engineer monitors the composited program output from a separate location in real time via Zoom, connected to the ATEM HD8 ISO via USB. They are the last line of defense before footage is recorded.</p>
+        <div class="duties-grid">
+          <div class="duty">Monitor the full program output throughout the entire shoot</div>
+          <div class="duty">Watch multiview feed showing all camera channels simultaneously</div>
+          <div class="duty">Monitor audio waveforms and VU meters — flag any clip or dropout via IFB</div>
+          <div class="duty">Log every flagged issue with the timecode it occurred at</div>
+          <div class="duty">Verify HyperDeck recording status is active during all takes</div>
+          <div class="duty">Deliver written QC log to editor within 1 hour of wrap</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>ATEM + Zoom Remote Monitoring</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=ATEMZoomFull" target="_blank">Using ATEM Mini PRO with ZOOM — Full Setup + Tips <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=ATEMZoomUSBC" target="_blank">Easy Streaming with ATEM Mini Pro via USB-C <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=ATEMZoomComplete" target="_blank">How To Use the ATEM with Zoom — Complete Setup <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=ATEMWebcam" target="_blank">How to Use the ATEM Mini PRO/ISO as a Webcam for Zoom <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">04</span>
+        <div class="role-title-wrap"><div class="role-title">Floor Manager</div><div class="role-subtitle">On-set communication · Guest comfort · Camera starts · Graphics · Timing</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Floor Manager is the director's representative on the studio floor — communicating with guests, managing on-set comfort, keeping the shoot on time.</p>
+        <div class="duties-grid">
+          <div class="duty">Communicate with guests and manage on-set comfort throughout the shoot</div>
+          <div class="duty">Start recording on cameras on the Director's cue</div>
+          <div class="duty">Move equipment and adjust set as needed between takes</div>
+          <div class="duty">Monitor time to keep the shoot on schedule</div>
+          <div class="duty">Control and launch graphics on TV monitors as directed</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>YouTube</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=RRBEPQNMm94" target="_blank">The Job of a TV Stage Manager / Floor Director <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=1cbIf36S6OA" target="_blank">How to Be a Studio Broadcast Floor Manager <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=w-xrG9WswSE" target="_blank">How to Be a Floor Director <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=w6jujRyERSc" target="_blank">Tutorial: Floor Manager <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=vts210QiT5Y" target="_blank">Floor Manager Hand Signals <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">05</span>
+        <div class="role-title-wrap"><div class="role-title">Script Supervisor</div><div class="role-subtitle">Continuity · Take tracking · Timing · Editor notes</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Script Supervisor maintains continuity, tracks good takes, times scenes, and provides detailed notes to the editor.</p>
+        <div class="duties-grid">
+          <div class="duty">Maintain continuity notes during the shoot</div>
+          <div class="duty">Track good takes and those needing reshoots</div>
+          <div class="duty">Time scenes to match client requirements</div>
+          <div class="duty">Document ad-libs or script changes in real time</div>
+          <div class="duty">Provide detailed notes to the editor for post-production</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/creating-a-short-film-06-working-on-set" target="_blank">Using a Script Supervisor — Creating a Short Film: 06 <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/learning-cinematography-2-working-on-set" target="_blank">Work with the Script Supervisor — Learning Cinematography: 2 <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>YouTube</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=Z3CywQw30gE" target="_blank">What Does a Script Supervisor Do in Film & TV? <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=rcgVhfBxKY4" target="_blank">Script Supervisor: The Most Misunderstood Job on Set <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=KHT8atuN8aI" target="_blank">Script Continuity Sheet and Other Important Production Notes <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">06</span>
+        <div class="role-title-wrap"><div class="role-title">Client Relations</div><div class="role-subtitle">Guest welcome · Studio tour · Comfort · Communication throughout shoot</div></div>
+        <div class="role-tags"><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">Client Relations ensures guests and clients feel welcomed, comfortable, and informed throughout the entire shoot day.</p>
+        <div class="duties-grid">
+          <div class="duty">Greet clients and make them feel welcome on arrival</div>
+          <div class="duty">Show them around the studio and dressing room</div>
+          <div class="duty">Ensure client comfort: food, water, facilities</div>
+          <div class="duty">Escort or assist clients throughout the day</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/consulting-foundations-client-management-and-relationships" target="_blank">Consulting Foundations: Client Management and Relationships <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/communication-foundations" target="_blank">Communication Foundations <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/develop-your-communication-skills-and-interpersonal-influence" target="_blank">Develop Your Communication Skills and Interpersonal Influence <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/communication-within-teams" target="_blank">Communication Within Teams <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">07</span>
+        <div class="role-title-wrap"><div class="role-title">Audio Engineer</div><div class="role-subtitle">Boom & lav setup · Audio monitoring · IFB/comm systems · Troubleshooting</div></div>
+        <div class="role-tags"><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Audio Engineer is responsible for capturing clean, broadcast-quality audio — from mic placement and wiring to real-time monitoring and troubleshooting.</p>
+        <div class="duties-grid">
+          <div class="duty">Set up and place boom mics and lavaliers correctly</div>
+          <div class="duty">Ensure mics are functioning properly before and during the shoot</div>
+          <div class="duty">Monitor audio output and waveforms during recording</div>
+          <div class="duty">Ensure in-house crew IFB communication system is working</div>
+          <div class="duty">Troubleshoot audio issues in real time</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/audio-for-video-production-and-post-sound-techniques" target="_blank">Audio for Video: Production and Post Sound Techniques <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/audio-recording-techniques" target="_blank">Audio Recording Techniques <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/creating-a-short-film-12-audio" target="_blank">Creating a Short Film: 12 Audio <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/microphone-techniques-essentials" target="_blank">Microphone Techniques: Essentials <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/dslr-video-tips-audio" target="_blank">DSLR Video Tips: Audio <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">08</span>
+        <div class="role-title-wrap"><div class="role-title">Lighting</div><div class="role-subtitle">DMX controllers · Studio lighting · Flare prevention · Setup & breakdown</div></div>
+        <div class="role-tags"><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Lighting role adjusts and operates studio lights to match the client's desired look, using DMX controllers and monitoring the program output to ensure lighting reads correctly on camera.</p>
+        <div class="duties-grid">
+          <div class="duty">Adjust lights to match the client's desired look</div>
+          <div class="duty">Operate DMX controllers and make changes as needed</div>
+          <div class="duty">Monitor program output to ensure lighting looks correct on camera</div>
+          <div class="duty">Prevent flares, reflections, and other lighting issues</div>
+          <div class="duty">Set up and break down lighting equipment</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/lighting-design-for-video-productions" target="_blank">Lighting Design for Video Productions <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/video-production-location-lighting" target="_blank">Video Production: Location Lighting <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/introduction-to-video-lighting-techniques" target="_blank">Introduction to Video Lighting Techniques <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/cinematic-video-lighting" target="_blank">Cinematic Video Lighting <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/corporate-and-documentary-video-lighting" target="_blank">Corporate and Documentary Video Lighting <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">09</span>
+        <div class="role-title-wrap"><div class="role-title">Ingest / Footage Wrangler</div><div class="role-subtitle">Footage copying · Backups · DaVinci Resolve · Proxies · Multicam sync</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Ingest/Footage Wrangler copies all footage to the production server, creates backups, sets up DaVinci Resolve Cloud projects, and prepares multicam clips for the editor.</p>
+        <div class="duties-grid">
+          <div class="duty">Copy all footage and audio to production server immediately after shoot</div>
+          <div class="duty">Back up dailies to drives and cloud</div>
+          <div class="duty">Set up DaVinci Resolve Cloud project</div>
+          <div class="duty">Ingest footage and create proxies for editing</div>
+          <div class="duty">Set up multicam clips and sync for editing</div>
+          <div class="duty">Ensure naming conventions are followed throughout</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>YouTube</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=X80ldcyPg3w" target="_blank">How to D.I.T on a Film Set with DaVinci Resolve <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=fNdCuh3kZNQ" target="_blank">How to Import and Copy Footage — The Clone Tool <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=CBBqebINCYE" target="_blank">How To Import & Organize Footage — DaVinci Resolve 19 <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=gnguTpLZWLQ" target="_blank">DaVinci Resolve 19 MultiCam Sync <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=QTAAmCg6zUQ" target="_blank">DaVinci Resolve Proxy Workflow in 3 Minutes <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">10</span>
+        <div class="role-title-wrap"><div class="role-title">Production Assistant</div><div class="role-subtitle">Setup & breakdown · Equipment · Cable management · Client support</div></div>
+        <div class="role-tags"><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Production Assistant supports all crew members with setup, breakdown, equipment organization, and general problem-solving.</p>
+        <div class="duties-grid">
+          <div class="duty">Assist crew with setup and breakdown before and after shoots</div>
+          <div class="duty">Fetch and organize equipment as needed throughout the day</div>
+          <div class="duty">Help with minor technical tasks such as cable management</div>
+          <div class="duty">Support client comfort and amenities</div>
+          <div class="duty">General problem-solving and on-set support</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/virtual-apprentice-being-a-great-production-assistant" target="_blank">Virtual Apprentice: Being a Great Production Assistant <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/creating-a-short-film-06-working-on-set" target="_blank">Creating a Short Film: 06 Working on Set <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/making-a-short-film-start-to-finish" target="_blank">Making a Short Film: Start to Finish <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/diy-filmmaking-tips-weekly" target="_blank">DIY Filmmaking Tips Weekly <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">11</span>
+        <div class="role-title-wrap"><div class="role-title">First Camera</div><div class="role-subtitle">Exposure · Focus · Composition · Director collaboration</div></div>
+        <div class="role-tags"><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The First Camera Operator operates the primary camera with full knowledge of exposure, focus, and composition — collaborating closely with the Director and Lighting.</p>
+        <div class="duties-grid">
+          <div class="duty">Operate camera with knowledge of exposure, focus, and composition</div>
+          <div class="duty">Ensure camera is functioning correctly throughout the shoot</div>
+          <div class="duty">Collaborate with Director and Lighting to achieve the desired look</div>
+          <div class="duty">Monitor framing and adjust as needed throughout each take</div>
+          <div class="duty">Troubleshoot camera issues in real time</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/learning-cinematography-1-narrative-fundamentals" target="_blank">Learning Cinematography: 1 Narrative Fundamentals <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/learning-cinematography-2-working-on-set" target="_blank">Learning Cinematography: 2 Working on Set <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/video-foundations-cameras-and-shooting" target="_blank">Video Foundations: Cameras and Shooting <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/multi-camera-video-production-and-post" target="_blank">Multi-Camera Video Production and Post <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/video-gear-cameras" target="_blank">Camera Operation Basics for Video Production <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">12</span>
+        <div class="role-title-wrap"><div class="role-title">Second Camera</div><div class="role-subtitle">Same as First Camera · Takes cues from First Camera · Multi-camera teamwork</div></div>
+        <div class="role-tags"><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Second Camera Operator shares the same foundational responsibilities as First Camera, taking direction and cues from the First Camera Operator to complement the primary angle.</p>
+        <div class="duties-grid">
+          <div class="duty">Same responsibilities as First Camera Operator</div>
+          <div class="duty">Take direction and cues from the First Camera Operator</div>
+          <div class="duty">Collaborate with Director and Lighting</div>
+          <div class="duty">Troubleshoot camera issues in real time</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning — Same as First Camera</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/learning-cinematography-1-narrative-fundamentals" target="_blank">Learning Cinematography: 1 Narrative Fundamentals <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/learning-cinematography-2-working-on-set" target="_blank">Learning Cinematography: 2 Working on Set <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/video-foundations-cameras-and-shooting" target="_blank">Video Foundations: Cameras and Shooting <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/multi-camera-video-production-and-post" target="_blank">Multi-Camera Video Production and Post <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">13</span>
+        <div class="role-title-wrap"><div class="role-title">Assistant Director</div><div class="role-subtitle">Production flow · Slate & continuity · Talent management · Logistics</div></div>
+        <div class="role-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-li">LinkedIn Learning</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">The Assistant Director supports the Director with overall production flow — managing talent and crew timing, handling slate and continuity, and troubleshooting logistical issues.</p>
+        <div class="duties-grid">
+          <div class="duty">Assist Director with overall production flow and scheduling</div>
+          <div class="duty">Manage talent and crew timing and positioning on set</div>
+          <div class="duty">Communicate the Director's vision to the crew</div>
+          <div class="duty">Handle slate and continuity documentation</div>
+          <div class="duty">Troubleshoot logistical issues that come up during the shoot</div>
+        </div>
+        <div class="resources-label">Training Resources</div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-li"></span>LinkedIn Learning</div>
+          <ul class="resource-list">
+            <li><a href="https://www.linkedin.com/learning/creating-a-short-film-06-working-on-set" target="_blank">Creating a Short Film: 06 Working on Set <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/making-a-short-film-start-to-finish" target="_blank">Making a Short Film: Start to Finish <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/learning/diy-filmmaking-tips-weekly" target="_blank">DIY Filmmaking Tips Weekly <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <div class="resource-group-title"><span class="dot dot-yt"></span>YouTube — Specific Videos</div>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/watch?v=Q-j0TtmWK4w" target="_blank">How To Slate on Set — Clapperboard Tutorial <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=1pDuuOtgvS4" target="_blank">The Anatomy of a Call Sheet <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=rjiQsNKgmLg" target="_blank">How to Make a Call Sheet for Film <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=KHT8atuN8aI" target="_blank">Script Continuity Sheet and Other Important Production Notes <span class="arrow">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">14</span>
+        <div class="role-title-wrap"><div class="role-title">Production Team Lead</div><div class="role-subtitle">To be defined</div></div>
+        <div class="role-tags"><span class="tag tag-gear">TBD</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <p class="role-desc">Responsibilities for this role will be defined in a future session. In the meantime, team leads should familiarize themselves with all other roles and the overall training program.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · May 2026 · Internal Use Only
+</footer>
+
+<script>
+  function toggle(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.role-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+</script>
+
+</body>
+</html>

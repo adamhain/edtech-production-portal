@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab active">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge"><!-- BUILD:LAST_UPDATED -->
+Aug 6, 2026
+<!-- /BUILD:LAST_UPDATED --></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>EdTech Production Team Operations Portal</h1>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="data-notice">
+    ✅ <strong>Everything on this page is real data</strong> — Consultation Pipeline and Studio Usage are live from Podio and Outlook; Project Status, Recently Completed, and Studio Sub-Projects come from the latest Slack tracker exports; Team Members and Cross-Training Matrix come from <code>cross_training_matrix.csv</code>. To refresh: drop new exports into <code>Continuously Updated CSVs/</code> and/or edit the matrix CSV, then re-run <code>build_dashboard.py</code>.
+  </div>
+
+  <!-- ROW 1: Consultation Pipeline + Studio Usage -->
+  <div class="dashboard-grid" style="margin-bottom:20px;">
+
+    <!-- Studio Consultation Requests (live from Podio, added 2026-08-06) -->
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">
+          Consultation Pipeline
+          <span class="source-pill source-podio">Podio</span>
+        </div>
+        <span class="dash-card-meta"><!-- BUILD:PODIO_PIPELINE_META -->
+15 active · synced Aug 6, 2026 2:41 PM
+<!-- /BUILD:PODIO_PIPELINE_META --></span>
+      </div>
+      <div class="production-list">
+<!-- BUILD:PODIO_PIPELINE -->
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">Assistant Dean for Clerkship Education</div>
+            <div class="prod-meta">School of Medicine · Photography</div>
+          </div>
+          <span class="prod-status" style="background:#E3D6FF55; color:var(--ink-mid);">Intake Meeting Requested</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">Mental Health Stigma Video Series</div>
+            <div class="prod-meta">Emergency Medicine · Interview</div>
+          </div>
+          <span class="prod-status" style="background:#FAF2C455; color:var(--ink-mid);">New</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">Stanford Emergency Medicine Podcast Series</div>
+            <div class="prod-meta">Emergency Medicine</div>
+          </div>
+          <span class="prod-status" style="background:#FAF2C455; color:var(--ink-mid);">New</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">IT Career Pathways Podcast</div>
+            <div class="prod-meta">EdTech · Video podcast</div>
+          </div>
+          <span class="prod-status" style="background:#FAF2C455; color:var(--ink-mid);">New</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">Communications Director, Stanford Nutrition Studies Research Group</div>
+            <div class="prod-meta">Stanford Prevention Research Center, Department of Medicine, School of Medicine · Video podcast</div>
+          </div>
+          <span class="prod-status" style="background:#FAF2C455; color:var(--ink-mid);">New</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">Bookmark Stories Project</div>
+            <div class="prod-meta">Talking head(s) video</div>
+          </div>
+          <span class="prod-status" style="background:#FAF2C455; color:var(--ink-mid);">New</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">Director of Communications</div>
+            <div class="prod-meta">Department of Emergency Medicine / SoM · Video podcast</div>
+          </div>
+          <span class="prod-status" style="background:#E3D6FF55; color:var(--ink-mid);">Intake Meeting Requested</span>
+        </div>
+        <div class="production-item">
+          <div class="prod-info">
+            <div class="prod-title">ROVER Animation</div>
+            <div class="prod-meta">Talking head(s) video</div>
+          </div>
+          <span class="prod-status" style="background:#FAF2C455; color:var(--ink-mid);">New</span>
+        </div>
+        <p style="color:var(--ink-soft); font-size:11px; text-align:center; margin-top:4px;">+ 7 more active request(s) not shown</p>
+<!-- /BUILD:PODIO_PIPELINE -->
+      </div>
+    </div>
+
+    <!-- Studio Usage / Outlook Calendar -->
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">
+          Studio Usage
+          <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
+        </div>
+        <span class="dash-card-meta"><!-- BUILD:CALENDAR_META -->
+Next 2 event(s) · synced Aug 6, 2026 2:41 PM
+<!-- /BUILD:CALENDAR_META --></span>
+      </div>
+      <div class="studio-cal">
+<!-- BUILD:CALENDAR -->
+        <div class="cal-item">
+          <div class="cal-bar full"></div>
+          <div class="cal-info">
+            <div class="cal-date">Friday, Aug 14</div>
+            <div class="cal-desc">Neonarratives Podcast</div>
+          </div>
+          <div class="cal-time">10:00am – 12:30pm</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-bar full"></div>
+          <div class="cal-info">
+            <div class="cal-date">Tuesday, Aug 18</div>
+            <div class="cal-desc">Emergency Medicine Studio Hold</div>
+          </div>
+          <div class="cal-time">9:00am – 5:00pm</div>
+        </div>
+<!-- /BUILD:CALENDAR -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2: Team Members (full width, stacked above Cross-Training Matrix — was
+       too crowded side-by-side once the full 18-person roster went in) -->
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">
+        Team Members
+      </div>
+      <span class="dash-card-meta"><!-- BUILD:TEAM_META -->
+18 member(s)
+<!-- /BUILD:TEAM_META --></span>
+    </div>
+    <div class="team-grid">
+<!-- BUILD:TEAM_MEMBERS -->
+        <div class="team-member">
+          <div class="member-avatar">H</div>
+          <div class="member-name">Huy Tran</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">B</div>
+          <div class="member-name">Bindu Madhava</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">L</div>
+          <div class="member-name">Lauren Watley</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">K</div>
+          <div class="member-name">Katherine Cao</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">G</div>
+          <div class="member-name">Grace Sextro</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">T</div>
+          <div class="member-name">Teggin Summers</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">P</div>
+          <div class="member-name">Pauline Becker</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">I</div>
+          <div class="member-name">Irina Russell</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">W</div>
+          <div class="member-name">William Bottini</div>
+          <div class="member-cert"><span style="" class="cert-count">13</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">A</div>
+          <div class="member-name">Adam Hain</div>
+          <div class="member-cert"><span style="" class="cert-count">13</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">C</div>
+          <div class="member-name">Claire Follis</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">J</div>
+          <div class="member-name">Jessica Whittemore</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">S</div>
+          <div class="member-name">Semay Johnston</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">P</div>
+          <div class="member-name">Peter Nguyen</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">T</div>
+          <div class="member-name">Tela Vessa</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">B</div>
+          <div class="member-name">Britt Carr</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">M</div>
+          <div class="member-name">Michael McAuliffe</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">H</div>
+          <div class="member-name">Huong Pham</div>
+          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
+        </div>
+<!-- /BUILD:TEAM_MEMBERS -->
+    </div>
+  </div>
+
+  <!-- ROW 3: Cross-Training Matrix (full width) -->
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">
+        Cross-Training Matrix
+      </div>
+      <span class="dash-card-meta">C = certified · P = in progress</span>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr><th>Role</th><!-- BUILD:MATRIX_HEADER -->
+<th title="Huy Tran">Huy</th><th title="Bindu Madhava">Bindu</th><th title="Lauren Watley">Lauren</th><th title="Katherine Cao">Katherine</th><th title="Grace Sextro">Grace</th><th title="Teggin Summers">Teggin</th><th title="Pauline Becker">Pauline</th><th title="Irina Russell">Irina</th><th title="William Bottini">William</th><th title="Adam Hain">Adam</th><th title="Claire Follis">Claire</th><th title="Jessica Whittemore">Jessica</th><th title="Semay Johnston">Semay</th><th title="Peter Nguyen">Peter</th><th title="Tela Vessa">Tela</th><th title="Britt Carr">Britt</th><th title="Michael McAuliffe">Michael</th><th title="Huong Pham">Huong</th>
+<!-- /BUILD:MATRIX_HEADER --></tr>
+        </thead>
+        <tbody>
+<!-- BUILD:MATRIX_ROWS -->
+            <tr><td>Director</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>First Engineer</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Remote QC</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Floor Manager</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Script Supervisor</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Client Relations</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Audio Engineer</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Lighting</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Ingest/Wrangler</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Production PA</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>First Camera</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Second Camera</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+            <tr><td>Asst. Director</td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-done">C</span></td><td><span class="cell-done">C</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td><td><span class="cell-none">—</span></td></tr>
+<!-- /BUILD:MATRIX_ROWS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ROW 4: REAL data, generated from the Slack project tracker export -->
+  <div class="dashboard-grid" style="margin-bottom:20px;">
+
+    <!-- Project Status — % complete by Workflow Phase, aggregated across
+         all projects (not per-project) -->
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">
+          Project Status
+          <span class="source-pill source-slack">Slack</span>
+        </div>
+        <span class="dash-card-meta">Overall % complete per project</span>
+      </div>
+      <div class="proj-summary">
+<!-- BUILD:PROJECT_SUMMARY -->
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Elevate</span>
+            <span class="proj-frac">23 / 39 done · 59%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Gardner Podcast</span>
+            <span class="proj-frac">26 / 26 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Studio Promo Video</span>
+            <span class="proj-frac">15 / 30 done · 50%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:50%"></div></div>
+        </div>
+<!-- /BUILD:PROJECT_SUMMARY -->
+      </div>
+    </div>
+
+    <!-- Recently Completed — from the legacy tracker CSV, which has a real
+         completion timestamp the new tracker doesn't -->
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">
+          Recently Completed
+          <span class="source-pill source-slack">Slack</span>
+        </div>
+        <span class="dash-card-meta"><!-- BUILD:ACTIVITY_META -->
+73 rows in legacy export
+<!-- /BUILD:ACTIVITY_META --></span>
+      </div>
+      <div class="slack-list">
+<!-- BUILD:RECENT_ACTIVITY -->
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Production Crew/Skills Confirmed for Date <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
+          <div class="slack-assignee">adamhain · Scheduling</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Script Drafted <span style="color:var(--ink-soft);">— Elevate</span></div>
+          <div class="slack-assignee">adamhain · Pre-Production</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Set Design Implemented <span style="color:var(--ink-soft);">— Elevate</span></div>
+          <div class="slack-assignee">adamhain · Production Setup</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Script Drafted <span style="color:var(--ink-soft);">— Elevate</span></div>
+          <div class="slack-assignee">adamhain · Pre-Production</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Production Test Complete <span style="color:var(--ink-soft);">— Studio Promo Video</span></div>
+          <div class="slack-assignee">adamhain · Production Setup</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">SFX Design and Editing <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
+          <div class="slack-assignee">adamhain · Sound Design and Mix</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Color Correction Complete and Approved <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
+          <div class="slack-assignee">adamhain · Keying and Color</div>
+        </div>
+        <div class="slack-item">
+          <div class="slack-check done">✓</div>
+          <div class="slack-item-text done">Project and Footage Archived to Server and Secondary Backup <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
+          <div class="slack-assignee">adamhain · Achiving</div>
+        </div>
+<!-- /BUILD:RECENT_ACTIVITY -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 4b: Studio Sub-Projects (facilities/ops tasks — distinct from the
+       production-project tracker above) -->
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">
+        Studio Sub-Projects
+        <span class="source-pill source-slack">Slack</span>
+      </div>
+      <span class="dash-card-meta"><!-- BUILD:SUBPROJECTS_META -->
+113 tasks across 13 sub-projects
+<!-- /BUILD:SUBPROJECTS_META --></span>
+    </div>
+    <div class="proj-summary">
+<!-- BUILD:SUBPROJECTS_SUMMARY -->
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Calendar</span>
+            <span class="proj-frac">0 / 1 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">New</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Client Experience</span>
+            <span class="proj-frac">3 / 12 done · 25%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:25%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">Done</span><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">New</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Data Integration &amp; Evaluation</span>
+            <span class="proj-frac">0 / 1 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">In progress</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">General</span>
+            <span class="proj-frac">24 / 27 done · 89%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:89%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">Done</span><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">In progress, To Discuss</span><span class="proj-phase-pill">New</span><span class="proj-phase-pill">To Discuss</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">General/PM</span>
+            <span class="proj-frac">2 / 5 done · 40%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:40%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">In progress, To Discuss</span><span class="proj-phase-pill">New</span><span class="proj-phase-pill">To Discuss</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Inventory</span>
+            <span class="proj-frac">2 / 3 done · 67%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:67%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">New</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">MISC Studio Installation</span>
+            <span class="proj-frac">1 / 4 done · 25%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:25%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">New</span><span class="proj-phase-pill">To Discuss</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Main Studio Installation</span>
+            <span class="proj-frac">32 / 41 done · 78%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:78%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">Done</span><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">In progress, To Discuss</span><span class="proj-phase-pill">New</span><span class="proj-phase-pill">To Discuss</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Networking</span>
+            <span class="proj-frac">1 / 1 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">New</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Podcast Studio Installation</span>
+            <span class="proj-frac">6 / 7 done · 86%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:86%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">Backlog</span><span class="proj-phase-pill">Done</span><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">New</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Studio Cross Training</span>
+            <span class="proj-frac">1 / 5 done · 20%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:20%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">In progress, To Discuss</span><span class="proj-phase-pill">New</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Studio Look and Style Guide</span>
+            <span class="proj-frac">2 / 2 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">New, In progress</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Workflow Design</span>
+            <span class="proj-frac">1 / 4 done · 25%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:25%"></div></div>
+          <div class="proj-phase-row"><span class="proj-phase-pill">New</span><span class="proj-phase-pill">To Discuss</span></div>
+        </div>
+<!-- /BUILD:SUBPROJECTS_SUMMARY -->
+    </div>
+  </div>
+
+  <!-- ROW 5: Production Archive / Backup Status (snapshot from the
+       "Studio Backup and Archive Tracker" Google Sheet, pulled 2026-08-06 —
+       not live-synced, re-run the pull manually if the sheet changes) -->
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Production Archive Status</div>
+      <span class="dash-card-meta"><!-- BUILD:ARCHIVE_META -->
+38 productions · 10 need attention · snapshot from Aug 2026
+<!-- /BUILD:ARCHIVE_META --></span>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr><th style="text-align:left;">Production</th><th style="text-align:left;">Status</th><th style="text-align:left;">Backup</th><th style="text-align:left;">Google Drive</th><th style="text-align:left;">TDS Server</th></tr>
+        </thead>
+        <tbody>
+<!-- BUILD:ARCHIVE_ROWS -->
+            <tr>
+              <td>REVERI</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="&quot;W:\EdTech Project Backups\Reveri&quot;">&quot;W:\EdTech Project Backups\Reveri&quot;</td>
+            </tr>
+            <tr>
+              <td>PATH CAP</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1ZZ2egpY1ElJggDuot322U5Q_noUFNny9?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="&quot;W:\EdTech Project Backups\Path Cap Introduction&quot;">&quot;W:\EdTech Project Backups\Path Cap Introduction&quot;</td>
+            </tr>
+            <tr>
+              <td>CLERKSHIP ASSESSMENT — Tracy/Ted Talk</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/132vGGfwLbryyON5m2czzcW6kGNeI5p8_?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="&quot;W:\EdTech Project Backups\Clerkship Assessment Project_Narrative Assessment&quot;">&quot;W:\EdTech Project Backups\Clerkship Assessment Project_Narrative Assessment&quot;</td>
+            </tr>
+            <tr>
+              <td>CLERKSHIP ASSESSMENT — ONE45/Framework</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1zibqPoTK4RpMhi7y05l3j0Br9LV1EAzJ?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>EM PODCAST — 1</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1P2vNWwNCc4D5bvRF2fawChMYzukBxaEW?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\Emergency Medicine Podcast [mp4s only]">W:\EdTech Project Backups\Emergency Medicine Podcast [mp4s only]</td>
+            </tr>
+            <tr>
+              <td>EM PODCAST — 2</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1XL65I1BIqBnZpadol4QOa4T9UG8E9w0y?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\Emergency Medicine Podcast [mp4s only]">W:\EdTech Project Backups\Emergency Medicine Podcast [mp4s only]</td>
+            </tr>
+            <tr>
+              <td>EM PODCAST — 3</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Thinking Habits</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/10X2VSmJKuyILiO-RvmkXmLXA0EClec6Q?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="&quot;W:\EdTech Project Backups\EdTech Learning Lab Thinking Habits Episode&quot;">&quot;W:\EdTech Project Backups\EdTech Learning Lab Thinking Habits Episode&quot;</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Bladder Basics</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics">W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Edtech Studio</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics">W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Teggin Summers</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1g4y0_n3_g7VdkpjR15gH84bgCaw45NMg?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics">W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — RMK</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Darren Salmi</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1m0XA8rpkTR7uxpj9otd1BFC9W6vZgxb_?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="&quot;W:\EdTech Project Backups\Dr. Salmi Learning Lab&quot;">&quot;W:\EdTech Project Backups\Dr. Salmi Learning Lab&quot;</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Meenu Singh</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1wOCUR-WUNdrDruWm6Fpox_JQyCuS3F-W?usp=drive_link
+https://drive.google.com/drive/folders/10sWTUAbOLPoT8RlZJ_9Vlzaoo3yPuE_u?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics">W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — K Sainani</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1w_iHPgjXq4s4kv6FPJnKzR0w-EEsRwCi?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics">W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Christopher Gardener</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast">W:\EdTech Project Backups\EdTech Learning Lab Podcast</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Anuj Aggarwal</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast">W:\EdTech Project Backups\EdTech Learning Lab Podcast</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — Design Thinking Course</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1DZv3jRwQAKM48ZXw77hPMq1WmUouPUlA?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics">W:\EdTech Project Backups\EdTech Learning Lab Podcast\LL Bladder Basics</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — TGD</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast">W:\EdTech Project Backups\EdTech Learning Lab Podcast</td>
+            </tr>
+            <tr>
+              <td>LEARNING LAB PODCAST — ROVER</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="W:\EdTech Project Backups\EdTech Learning Lab Podcast">W:\EdTech Project Backups\EdTech Learning Lab Podcast</td>
+            </tr>
+            <tr>
+              <td>QGenda — Studio Shoots</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1pGIm6KJXwilJoWR2Uy0NSQUiutfKSgtP?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>QGenda — Location Shoots</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1pGIm6KJXwilJoWR2Uy0NSQUiutfKSgtP?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>AI CliC Explainer</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1imXQRGtSN2FdI5aa6k5z-FMeuDjh29Nn" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>AI CliC CME MOD 1-3</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1-vP_u415-Y0RAnGBSqS6BlamrAh2nR-Z?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>AI CliC CME MOD 4-5</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1hCnlL2dLVmNSUrU_rpX3qcFYdsU2aciE" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>AI CliC Explainer Reshoot</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/1klJ8xnNHMbvqVClCY8War72gmwFVT5v5?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="&quot;W:\EdTech Project Backups\Thinking Habits Coach Reshoot\4K H265 Backup Files&quot;">&quot;W:\EdTech Project Backups\Thinking Habits Coach Reshoot\4K H265 Backup Files&quot;</td>
+            </tr>
+            <tr>
+              <td>Studio Promo B Roll</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">TBD</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>TGD CARE TRAILER INTERVIEWS</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">TBD</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>TDS ALL HANDS DEMO</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">TBD</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>ELEVATE DIDACTICS</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/135ncSZgmL0FglPuCV7qUmlOyiVTJ8noC?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>ELEVATE ROLEPLAYS</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/135ncSZgmL0FglPuCV7qUmlOyiVTJ8noC?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>ELEVATE BRAINSTORMS</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/135ncSZgmL0FglPuCV7qUmlOyiVTJ8noC?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>CME LEADERSHIP PROMOS</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><a href="https://drive.google.com/drive/folders/14WYg512OqUkGTIvnJ8YT-dE134bZBYwZ?usp=drive_link" target="_blank" rel="noopener">Drive ↗</a></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>IDD</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>FAM MED</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">TBD</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>DR. Abby NEO</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>Urodynamics</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+            <tr>
+              <td>Maya Thomas</td>
+              <td style="text-align:left;">Complete</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--yellow-light); color:var(--yellow);">⚠️ Not backed up</span></td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">NOT BACKED UP</td>
+              <td style="text-align:left; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="NOT BACKED UP">NOT BACKED UP</td>
+            </tr>
+<!-- /BUILD:ARCHIVE_ROWS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ROW 7: Equipment Orders (snapshot of the "FY 2026 July" tab from the
+       "Production Studio Budget" Google Sheet, pulled 2026-08-06 — not
+       live-synced, re-run the pull manually if the sheet changes) -->
+  <div class="dash-card" style="margin-bottom:0;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Equipment Orders — FY 2026 July</div>
+      <span class="dash-card-meta"><!-- BUILD:EQUIPMENT_META -->
+14 items · order total $1,917.99 · snapshot from Aug 2026
+<!-- /BUILD:EQUIPMENT_META --></span>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr><th style="text-align:left;">Item</th><th style="text-align:left;">Cost</th><th style="text-align:left;">Total</th><th style="text-align:left;">Purchased</th><th style="text-align:left;">Received</th><th style="text-align:left;">Link</th></tr>
+        </thead>
+        <tbody>
+<!-- BUILD:EQUIPMENT_ROWS -->
+            <tr>
+              <td>Blackmagic Design SmartView Duo Rackmountable Dual 8&quot; LCD Monitors</td>
+              <td style="text-align:left;">$675.00</td>
+              <td style="text-align:left;">—</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.bhphotovideo.com/c/product/766059-REG/Blackmagic_Design_HDL_SMTVDUO_SmartView_Duo_Rackmountable_Dual.html" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>SF Bay Coffee Pods Pack</td>
+              <td style="text-align:left;">$48.00</td>
+              <td style="text-align:left;">$48.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/Francisco-OneCup-Variety-Single-Coffee/dp/B00HS6FR98/ref=sr_1_1_sspa?crid=NPLVR44RB1T0&amp;dib=eyJ2IjoiMSJ9.l-k3tzpeNRzAaBKhff6eE8qMLkWy8ULppEkkjDEG-46RmzP5Q_5MeV8BoV78_HJZ6swWPiXhEyu0rFcyGs0Rk4Yw0GXA_y76OvFN_wujkrOV89Zf0HrWfOxp6AQEnFE1wWePh2OhUFG9Z1jTMv8GulSNdJVjO5wlaNIswJOveh1EHSWqkd9SkxjeltX9VAxmzefeb81L7_-OqeVH1jbJghSeZEkLQohUggQc-XfRvdzVEgVENyf9LKN3TdAiY5bO80yGFzdvl0_zG8zaRLnACr9CWSuINej02PNHuwQ379Y.iFQtaICbQ1DesB0TpnVHdAT-ykAT0XYEWsfyrAvXyyE&amp;dib_tag=se&amp;keywords=coffee%2Bpods%2Bfor%2Bkeurig%2Bcoffee%2Bmaker%2Bbundle&amp;qid=1784568397&amp;sprefix=coffee%2Bpods%2Bfor%2Bkeurig%2Bcoffee%2Bmaker%2Bbundl%2Caps%2C209&amp;sr=8-1-spons&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>CAT6 Patch Cables 1ft</td>
+              <td style="text-align:left;">$25.00</td>
+              <td style="text-align:left;">$25.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/dp/B00XIFMQ2Y?ref=nb_sb_ss_w_as-reorder_k0_1_14&amp;amp=&amp;crid=MQYLB1VKE5QY&amp;sprefix=ethernet%2Bpatch&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>CAT6 Patch Cables 15ft</td>
+              <td style="text-align:left;">$55.00</td>
+              <td style="text-align:left;">$55.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/GearIT-Ethernet-Cable-Snagless-Patch/dp/B00FRWD8WI/ref=sr_1_13_sspa?crid=1IDEEI6CWOGON&amp;dib=eyJ2IjoiMSJ9.4vPAU6NOLUwliThY1ro5U0G7pVb1SyiGMDFFLBqv0GgwotrprwAX_o5eUUzuNV_4ZmVZS9usGoS2jHEFYewiRy1O7D-gHt6joY8YQwMTpS3AvvxiRqT9ZdhtTfTNzobexsiP-pg06rx881fS3745EtBBccBm-2K7AR699nKk1CpaXuTgcCghCs_huZQJZ-yC4jBZ_oqm9K650ss9Br1Q_CU_wlXqYOvb6CS-n_iVpYQQSaDK-r0qz5lvM5cRHzKF-89QzGugbfNyUaoNgTgElXZMGySFaEETxtUg1MRbt4U.9tsPpsYrFZ3GfrAq4e1GmAuJTsmZPMzSnCgkEGlmTWU&amp;dib_tag=se&amp;keywords=Gearit%2Bcat6A%2Bpatch%2Bcables&amp;qid=1784313022&amp;s=electronics&amp;sprefix=gearit%2Bcat6a%2Bpatch%2Bcable%2Celectronics%2C185&amp;sr=1-13-spons&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>CyberPower CP1500PFCRM2U PFC Sinewave UPS Battery Backup | 1500VA/1000W</td>
+              <td style="text-align:left;">$359.95</td>
+              <td style="text-align:left;">$359.95</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/CyberPower-CP1500PFCRM2U-Sinewave-Outlets-Rackmount/dp/B0B354X985?crid=1VS1O8CU1HYS7&amp;dib=eyJ2IjoiMSJ9.9sHw8RdYfyk5lEkrFxd2_hItypJ0kCe1wpr9y1BVDgy2vHoB4vuY2V-kJ2NzVj8dkvwMGjikvRHHSyyEG-3NEgQLZu1M987L9SWJIEmCZSrph-xvs5enB99umkabX0NIaueKJYnc8096gdFZBxZLw_fI-oBcJVCxVsdpnTnT5STTp9xa8rDKKFNIUWM67yHMkrYKBbxuHN-PWfVSGuSKv0vdOgWDVP-4T3uu-WXIip0.TsiLJ4J2RnGv4MHAC9VI5vmAaM8ijq5bcSxqu_Hde-o&amp;dib_tag=se&amp;keywords=rackmountable%2BUPS&amp;qid=1784079747&amp;sprefix=rackmountable%2Bups%2Caps%2C221&amp;sr=8-3&amp;ufe=app_do%3Aamzn1.fos.5998aa40-ec6f-4947-a68f-cd087fee0848&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>Club 3D DisplayPort to HDMI Adapter</td>
+              <td style="text-align:left;">$54.89</td>
+              <td style="text-align:left;">$109.78</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/Club-3D-CSV-7330-DisplayPort-Triple/dp/B0F4RKJ892/ref=sr_1_14_sspa?crid=3U1H2TSQV6N2S&amp;dib=eyJ2IjoiMSJ9.u5dmVHUIVyCopjMuG6dDSJuyqo5DKu6y9d83h6CHmZpvs_-0gRXJ4KJ2u1UhOqnKaSsUE2qiRjQxtvdj_RT6arYb0ck057wvfcSLC6Ik2KW8Xh3lzgjjMtm39DiLCPGfTbWihVqkJ1lWxhxspvkcpwnSCPvNqCo5XuRLWUthBUmBK7PciCZj5-HVNoK4pzyEz21hHnMetG81g1NX5a1JXUra9a5HAKKNOqMainlaVI4.R8JEuO-OFxPfQzHmqv95wzeXrxoL63az-lnQoUJ4vSI&amp;dib_tag=se&amp;keywords=displayport+to+2+hdmi&amp;qid=1784316233&amp;sprefix=displayport+to+2+hdmi%2Caps%2C242&amp;sr=8-14-spons&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&amp;psc=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>VELCRO Brand Reusable Cable Ties, 100 Pack 6 Inch, Cord &amp; Cable Management Straps for Electronics, Desk, Home Office &amp; Workstations, Black</td>
+              <td style="text-align:left;">$9.00</td>
+              <td style="text-align:left;">$18.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/VELCRO-Brand-Reusable-Management-Electrical/dp/B0DYJWL6QS/ref=sr_1_2_sspa?crid=H5KJYLYUK640&amp;dib=eyJ2IjoiMSJ9.aYJ-qTAbLZsedGX2EaJx2-AcjEbC9nkxTLfcvlmirKm9ryDjGic41ZViZTftrbxktRutVuG86oMLNSBPJCT20pyF2LG-nTNwztAgmupe27XY97ar1sS_hvsQLjszZIDTpGaNPlVqPWRC9kkm6pnQCh9-NacQXF7Rb_shmKC4Vhal5R035k6ZNSujsM8mhDlQU2WjjLFxfc71vu_I77OZfmiv0JDboz_kozTLOGaqQJQ.TRgxfGlmzD-K12GI4adeGCb0w5mhEK4Eqt2qquNuoi4&amp;dib_tag=se&amp;keywords=cable%2Bties&amp;qid=1784568519&amp;sprefix=cable%2Btie%2Caps%2C244&amp;sr=8-2-spons&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>Green Dot Stickers, 3/4 Inch Removable, GREEN</td>
+              <td style="text-align:left;">$15.95</td>
+              <td style="text-align:left;">$15.95</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/ChromaLabel-Removable-Color-Code-Labels-Dispenser/dp/B01926WM3K/ref=sr_1_11?crid=1CF6BSSLXFOP0&amp;dib=eyJ2IjoiMSJ9._9siJtVJQhE4pa4RkRkTzwuxVky3rKyMRmpuCb65hqWEglHkpbjYCXN_5h9SvHOQFXDYjGhBZZgy7UA24PS115wQG2S81Fr8N0RfCQ4UfGzf7s9gSk5YHuRmGLoQvUlmLiQ-wuu4Hde1AS8GHYcnFCqWruwGJs5YfxVaPksTIvPUei4fRNqzrzCovn-x-XmnPqLHESt0HLYZOAcZcZV46RN8rKc2IPZVDgnwLeu-xguNiet-UmCm17PDUjG5GimWCjT41wg7y5Z1Io4MvC5v_tjX7sr5z0oiBbKuE_MAxNs.6ycnLym2yoqqVI8uC5IZyuz27b7aUL3B09j68LP70vQ&amp;dib_tag=se&amp;keywords=chroma%2Bgreen%2Bsticker&amp;qid=1784318037&amp;sprefix=chroma%2Bgreen%2Bstick%2Caps%2C219&amp;sr=8-11&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>Green Dot Stickers, 3/4 Inch Removable, BLUE</td>
+              <td style="text-align:left;">$15.95</td>
+              <td style="text-align:left;">$15.95</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.amazon.com/ChromaLabel-Removable-Color-Code-Labels-Dispenser/dp/B07B3FCLL5/ref=sr_1_11?crid=1CF6BSSLXFOP0&amp;dib=eyJ2IjoiMSJ9._9siJtVJQhE4pa4RkRkTzwuxVky3rKyMRmpuCb65hqWEglHkpbjYCXN_5h9SvHOQFXDYjGhBZZgy7UA24PS115wQG2S81Fr8N0RfCQ4UfGzf7s9gSk5YHuRmGLoQvUlmLiQ-wuu4Hde1AS8GHYcnFCqWruwGJs5YfxVaPksTIvPUei4fRNqzrzCovn-x-XmnPqLHESt0HLYZOAcZcZV46RN8rKc2IPZVDgnwLeu-xguNiet-UmCm17PDUjG5GimWCjT41wg7y5Z1Io4MvC5v_tjX7sr5z0oiBbKuE_MAxNs.6ycnLym2yoqqVI8uC5IZyuz27b7aUL3B09j68LP70vQ&amp;dib_tag=se&amp;keywords=chroma%2Bgreen%2Bsticker&amp;qid=1784318037&amp;sprefix=chroma%2Bgreen%2Bstick%2Caps%2C219&amp;sr=8-11&amp;th=1" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>GL-iNet-GL-RM10 KVM Remote KVM</td>
+              <td style="text-align:left;">$151.18</td>
+              <td style="text-align:left;">$302.36</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.bhphotovideo.com/spanish/c/product/1975325-REG/gl_inet_gl_rm10_comet_pro_remote_kvm.html?gad_source=1&amp;gad_campaignid=68211173&amp;gbraid=0AAAAAD7yMh1jmsGMtlrIaVeNAsJPevNms&amp;gclid=CjwKCAjwpefSBhBvEiwAzyEtZ-PnTlf4vopM_RI1U8ZBHqIBkubR7WWoMkzvtNsL_81kJY3GcLxbxRoCulwQAvD_BwE" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>Blackmagic Design MultiView 4 HD</td>
+              <td style="text-align:left;">$235.00</td>
+              <td style="text-align:left;">$470.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.bhphotovideo.com/c/product/1401706-REG/blackmagic_design_hdl_multip3g_04hd_multiview_4_hd.html/?ap=y&amp;ap=y&amp;smp=y&amp;smp=y&amp;store=420&amp;lsft=BI%3A514&amp;gad_source=1&amp;gad_campaignid=1413135038&amp;gclid=Cj0KCQjwjvfSBhDpARIsAEiOpSv45UMz2sjmN15Ml9VCFQ-jxOOl8JwjOD_eBpgbBLsuTw1bjkcDroYaAhtCEALw_wcB" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>HTC Vive Base Station</td>
+              <td style="text-align:left;">$219.00</td>
+              <td style="text-align:left;">$219.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><a href="https://www.bhphotovideo.com/c/product/1766139-REG/htc_99hatv000_00_vive_base_station_2_0.html" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+            <tr>
+              <td>Sidus Pro</td>
+              <td style="text-align:left;">$99.00</td>
+              <td style="text-align:left;">$99.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--surface-2); color:var(--ink-soft);">No</span></td>
+              <td style="text-align:left;">—</td>
+            </tr>
+            <tr>
+              <td>Increased space on Black Magic Cloud from 500 GB to 1 TB Price increase from 7.50-15.00 per month</td>
+              <td style="text-align:left;">$15.00</td>
+              <td style="text-align:left;">$180.00</td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><span style="display:inline-block; white-space:nowrap; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:600; background:var(--green-light); color:var(--green);">✅ Yes</span></td>
+              <td style="text-align:left;"><a href="https://apps.cloud.blackmagicdesign.com/settings/services/cloud-storage" target="_blank" rel="noopener">View ↗</a></td>
+            </tr>
+<!-- /BUILD:EQUIPMENT_ROWS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CONNECT YOUR DATA SECTION -->
+  <div class="dash-card" style="margin-bottom:0;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Connect Live Data Sources</div>
+      <span class="dash-card-meta">Slack: done · Podio: done · Outlook: done</span>
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px;">
+      <div style="background:var(--podio-light); border-radius:var(--radius); padding:20px;">
+        <div style="font-size:13px; font-weight:700; color:var(--podio); margin-bottom:8px;">✅ Podio — connected</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Consultation Pipeline above is live from the Studio Consultation Requests app. That's the only Podio app this dashboard needs — Team Members/Cross-Training data comes from a spreadsheet instead.</div>
+        <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: on-demand (re-run build_dashboard.py)</div>
+      </div>
+      <div style="background:var(--slack-light); border-radius:var(--radius); padding:20px;">
+        <div style="font-size:13px; font-weight:700; color:var(--slack); margin-bottom:8px;">✅ Slack — connected via weekly export</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Project Status and Studio Sub-Projects above are generated from manually-downloaded Slack Lists exports in <code>Continuously Updated CSVs/</code>; Recently Completed comes from the legacy tracker CSV, which still has real completion timestamps. All run through <code>build_dashboard.py</code>. Not live/real-time — refresh by re-running the script after each new export.</div>
+        <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: weekly (manual)</div>
+      </div>
+      <div style="background:var(--accent-light); border-radius:var(--radius); padding:20px;">
+        <div style="font-size:13px; font-weight:700; color:var(--accent); margin-bottom:8px;">✅ Outlook — connected via public ICS feed</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Studio Usage above is pulled live from the studio's public "publish" calendar feed at build time — no Graph API/OAuth needed. Test-titled calendar entries are filtered out automatically.</div>
+        <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: on-demand (re-run build_dashboard.py)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
