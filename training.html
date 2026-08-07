@@ -176,6 +176,47 @@
     </div>
   </div>
 
+  <!-- Training Attestation (2026-08-08) — self-attestation workflow: 1
+       observation/shadowing + 2 supervised sessions per role, logged via
+       an embedded Google Form. Progress here is informational — it flags
+       readiness once someone hits 3/3, but Adam still confirms and
+       updates the official Cross-Training Matrix; a self-attestation
+       alone doesn't grant certification. See CLAUDE.md "Training
+       Attestation" for the form field spec and setup status. -->
+  <div class="dash-card" style="margin-bottom:24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Training Progress <span class="source-pill source-local">Self-Attested</span></div>
+      <span class="dash-card-meta"><!-- BUILD:ATTESTATION_META -->Not yet connected<!-- /BUILD:ATTESTATION_META --></span>
+    </div>
+    <p style="font-size:12px; color:var(--ink-soft); line-height:1.6; margin:0 0 16px;">To certify in a role: 1 observation (shadowing) + 2 supervised sessions. Log each one below — progress updates here. Reaching 3/3 flags it as ready; Adam still confirms and updates the official Cross-Training Matrix from there.</p>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr><th style="text-align:left;">Name</th><th style="text-align:left;">Role</th><th>Observation</th><th>Supervised #1</th><th>Supervised #2</th><th style="text-align:left;">Status</th></tr>
+        </thead>
+        <tbody>
+<!-- BUILD:ATTESTATION_ROWS -->
+          <tr><td colspan="6" style="color:var(--ink-soft); font-size:13px;">Form not connected yet — see CLAUDE.md "Training Attestation".</td></tr>
+<!-- /BUILD:ATTESTATION_ROWS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="dash-card" style="margin-bottom:24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Log a Training Session</div>
+    </div>
+    <p style="font-size:12px; color:var(--ink-soft); line-height:1.6; margin:0 0 16px;">Completed an observation or supervised session? Log it here — check off more than one at a time if you did, and submit again later as you complete more.</p>
+<!-- BUILD:ATTESTATION_FORM_EMBED -->
+    <div style="background:var(--surface); border: 1px dashed var(--border); border-radius:var(--radius); min-height:420px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:32px; text-align:center;">
+      <div style="font-size:28px; opacity:0.4;">📋</div>
+      <div style="font-size:13px; font-weight:600; color:var(--ink-mid);">Form not connected yet</div>
+      <div style="font-size:12px; color:var(--ink-soft); max-width:320px; line-height:1.6;">Waiting on the Google Form embed link — see CLAUDE.md "Training Attestation" for the exact field spec.</div>
+    </div>
+<!-- /BUILD:ATTESTATION_FORM_EMBED -->
+  </div>
+
   <div class="section-header">
     <h2>Role Reference &amp; Training Resources</h2>
     <span>Click any role to expand</span>
