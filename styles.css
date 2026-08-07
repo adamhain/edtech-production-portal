@@ -68,12 +68,12 @@ header {
 .hero { background: var(--white); padding: 56px 2rem 48px; border-bottom: 1px solid var(--border); }
 .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: center; }
 .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cardinal); margin-bottom: 16px; }
-.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.15; margin-bottom: 16px; }
-.hero h1 em { font-style: italic; color: var(--cardinal); }
+.hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 16px; }
+.hero h1 em { font-style: normal; color: var(--cardinal); }
 .hero-desc { font-size: 15px; color: var(--ink-mid); font-weight: 300; line-height: 1.7; }
 .hero-stats { background: var(--surface-2); border-radius: var(--radius-lg); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .stat { display: flex; flex-direction: column; gap: 4px; }
-.stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--ink); line-height: 1; }
+.stat-num { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 2rem; color: var(--ink); line-height: 1; }
 .stat-num.accent { color: var(--cardinal); }
 .stat-label { font-size: 12px; color: var(--ink-soft); }
 
@@ -155,7 +155,7 @@ header {
 .production-list { display: flex; flex-direction: column; gap: 10px; }
 .production-item { background: var(--surface); border-radius: var(--radius); padding: 14px 16px; display: flex; align-items: center; gap: 16px; }
 .prod-date { text-align: center; min-width: 40px; }
-.prod-day { font-size: 18px; font-weight: 700; font-family: 'DM Serif Display', serif; color: var(--ink); line-height: 1; }
+.prod-day { font-size: 18px; font-weight: 700; font-family: 'DM Sans', sans-serif; color: var(--ink); line-height: 1; }
 .prod-month { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
 .prod-divider { width: 1px; height: 36px; background: var(--border); }
 .prod-info { flex: 1; }
@@ -221,13 +221,13 @@ header {
 
 /* SECTION HEADER */
 .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-.section-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; font-weight: 400; }
+.section-header h2 { font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 700; }
 .section-header span { font-size: 13px; color: var(--ink-soft); }
 
 /* PHILOSOPHY */
 .philosophy { background: var(--ink); color: var(--white); padding: 48px 2rem; }
 .philosophy-inner { max-width: 1200px; margin: 0 auto; }
-.philosophy h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 28px; }
+.philosophy h2 { font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 28px; }
 .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .phase { border-left: 2px solid var(--cardinal); padding-left: 20px; }
 .phase-num { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cardinal-light); font-weight: 600; margin-bottom: 6px; }
