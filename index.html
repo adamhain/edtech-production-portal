@@ -71,7 +71,7 @@ Aug 7, 2026
 <div class="main">
 
   <div class="data-notice">
-    ✅ <strong>Everything on this page is real data</strong> — Consultation Pipeline and Studio Usage are live from Podio and Outlook; Project Status, Recently Completed, and Studio Sub-Projects come from the latest Slack tracker exports; Team Members and Cross-Training Matrix come from <code>cross_training_matrix.csv</code>. To refresh: drop new exports into <code>Continuously Updated CSVs/</code> and/or edit the matrix CSV, then re-run <code>build_dashboard.py</code>.
+    ✅ <strong>Everything on this page is real data</strong> — Consultation Pipeline and Studio Usage are live from Podio and Outlook; Project Status, Recently Completed, and Studio Sub-Projects come from the latest Slack tracker exports; Cross-Training Matrix comes from <code>cross_training_matrix.xlsx</code> (Team Members moved to the Training &amp; Roles page). To refresh: drop new exports into <code>Continuously Updated CSVs/</code> and/or edit the matrix spreadsheet, then re-run <code>build_dashboard.py</code>.
   </div>
 
   <!-- ROW 1: Consultation Pipeline + Studio Usage -->
@@ -85,7 +85,7 @@ Aug 7, 2026
           <span class="source-pill source-podio">Podio</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:PODIO_PIPELINE_META -->
-15 active · synced Aug 7, 2026 1:37 PM
+15 active · synced Aug 7, 2026 1:42 PM
 <!-- /BUILD:PODIO_PIPELINE_META --></span>
       </div>
       <div class="production-list">
@@ -159,7 +159,7 @@ Aug 7, 2026
           <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:CALENDAR_META -->
-Next 2 event(s) · synced Aug 7, 2026 1:37 PM
+Next 2 event(s) · synced Aug 7, 2026 1:42 PM
 <!-- /BUILD:CALENDAR_META --></span>
       </div>
       <div class="studio-cal">
@@ -185,114 +185,10 @@ Next 2 event(s) · synced Aug 7, 2026 1:37 PM
     </div>
   </div>
 
-  <!-- ROW 2: Team Members (full width, stacked above Cross-Training Matrix — was
-       too crowded side-by-side once the full 18-person roster went in) -->
-  <div class="dash-card" style="margin-bottom:20px;">
-    <div class="dash-card-header">
-      <div class="dash-card-title">
-        Team Members
-      </div>
-      <span class="dash-card-meta"><!-- BUILD:TEAM_META -->
-18 member(s)
-<!-- /BUILD:TEAM_META --></span>
-    </div>
-    <div class="team-grid">
-<!-- BUILD:TEAM_MEMBERS -->
-        <div class="team-member">
-          <div class="member-avatar">H</div>
-          <div class="member-name">Huy Tran</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">9</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">B</div>
-          <div class="member-name">Bindu Madhava</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">10</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">L</div>
-          <div class="member-name">Lauren Watley</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">K</div>
-          <div class="member-name">Katherine Cao</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">7</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">G</div>
-          <div class="member-name">Grace Sextro</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">10</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">T</div>
-          <div class="member-name">Teggin Summers</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">P</div>
-          <div class="member-name">Pauline Becker</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">I</div>
-          <div class="member-name">Irina Russell</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">W</div>
-          <div class="member-name">William Bottini</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">12</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">A</div>
-          <div class="member-name">Adam Hain</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">12</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">C</div>
-          <div class="member-name">Claire Follis</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">J</div>
-          <div class="member-name">Jessica Whittemore</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">S</div>
-          <div class="member-name">Semay Johnston</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">P</div>
-          <div class="member-name">Peter Nguyen</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">T</div>
-          <div class="member-name">Tela Vessa</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">B</div>
-          <div class="member-name">Britt Carr</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">M</div>
-          <div class="member-name">Michael McAuliffe</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-        <div class="team-member">
-          <div class="member-avatar">H</div>
-          <div class="member-name">Huong Pham</div>
-          <div class="member-cert" style="color:var(--yellow)"><span style="font-weight:700" class="cert-count">0</span> / 13 roles</div>
-        </div>
-<!-- /BUILD:TEAM_MEMBERS -->
-    </div>
-  </div>
+  <!-- Team Members card moved to Training & Roles page (2026-08-07) per
+       Adam's request — see training.template.html. -->
 
-  <!-- ROW 3: Cross-Training Matrix (full width) -->
+  <!-- Cross-Training Matrix (full width) -->
   <div class="dash-card" style="margin-bottom:20px;">
     <div class="dash-card-header">
       <div class="dash-card-title">
