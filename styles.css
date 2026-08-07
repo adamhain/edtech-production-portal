@@ -180,6 +180,9 @@ header {
 .proj-summary { display: flex; flex-direction: column; gap: 14px; }
 .proj-row-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
 .proj-name { font-weight: 600; font-size: 13px; color: var(--ink); }
+.proj-name-link { text-decoration: none; cursor: pointer; }
+.proj-name-link:hover { color: var(--cardinal); text-decoration: underline; }
+.proj-link-icon { font-size: 11px; font-weight: 400; color: var(--ink-soft); }
 .proj-frac { font-size: 11px; color: var(--ink-soft); }
 .proj-bar-track { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
 .proj-bar-fill { height: 100%; background: var(--green); border-radius: 3px; }
