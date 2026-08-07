@@ -86,7 +86,7 @@ Aug 7, 2026
           <span class="source-pill source-podio">Podio</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:PODIO_PIPELINE_META -->
-15 active · synced Aug 7, 2026 1:52 PM
+15 active · synced Aug 7, 2026 2:10 PM
 <!-- /BUILD:PODIO_PIPELINE_META --></span>
       </div>
       <div class="production-list">
@@ -160,7 +160,7 @@ Aug 7, 2026
           <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:CALENDAR_META -->
-Next 2 event(s) · synced Aug 7, 2026 1:52 PM
+Next 2 event(s) · synced Aug 7, 2026 2:10 PM
 <!-- /BUILD:CALENDAR_META --></span>
       </div>
       <div class="studio-cal">
@@ -485,6 +485,135 @@ Next 2 event(s) · synced Aug 7, 2026 1:52 PM
           <div class="proj-phase-row"><span class="proj-phase-pill">New</span><span class="proj-phase-pill">To Discuss</span></div>
         </div>
 <!-- /BUILD:SUBPROJECTS_SUMMARY -->
+    </div>
+  </div>
+
+  <!-- Project Registry (2026-08-07) — master list of every Studio
+       Production, EdTech Project, and Internal Project, maintained
+       directly by Adam in project_registry.xlsx (see
+       create_project_registry.py). A framework for now: flat and
+       manually edited, meant to eventually become part of a real
+       database related to live Slack/Podio task data — see CLAUDE.md. -->
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">
+        Studio, EdTech &amp; Internal Projects
+        <span class="source-pill source-local">Registry</span>
+      </div>
+      <span class="dash-card-meta"><!-- BUILD:REGISTRY_META -->
+22 project(s) — framework, not yet database-backed
+<!-- /BUILD:REGISTRY_META --></span>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;">
+      <div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-bottom:10px;">Studio Productions</div>
+        <div>
+<!-- BUILD:REGISTRY_STUDIO -->
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">CME Promo</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Possibly the same as &quot;Emergency Medicine Podcast&quot; in the Production Archive Status table on the Backups page — confirm.">
+          <span style="font-size:12px; color:var(--ink);">EM Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+<!-- /BUILD:REGISTRY_STUDIO -->
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-bottom:10px;">Edtech Projects</div>
+        <div>
+<!-- BUILD:REGISTRY_EDTECH -->
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Same as &quot;Elevate Production Workflow&quot; in the Slack tracker / Dashboard Project Status card.">
+          <span style="font-size:12px; color:var(--ink);">Elevate</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">IDD</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">NeoNarratives</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Umbrella project — tracked day-to-day via the UDN Video 1/2/3 Slack Lists on the Dashboard Project Status card.">
+          <span style="font-size:12px; color:var(--ink);">UDN</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+<!-- /BUILD:REGISTRY_EDTECH -->
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-bottom:10px;">Internal Projects</div>
+        <div>
+<!-- BUILD:REGISTRY_INTERNAL -->
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
+          <span style="font-size:12px; color:var(--ink);">Aggarwal Podcast</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
+          <span style="font-size:12px; color:var(--ink);">Bladder Basics Podcast</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Design Thinking Course Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Edtech Studio Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
+          <span style="font-size:12px; color:var(--ink);">Gardner Podcast</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">RMK Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">ROVER Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Sainani Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Salmi Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Singh Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card. (Adam wrote &quot;Studio Promotion Video&quot; — normalized to match the existing tracked name; rename back here if that was intentional.)">
+          <span style="font-size:12px; color:var(--ink);">Studio Promotional Video</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Possibly related to the &quot;Studio Look and Style Guide&quot; category in the Studio Sub-Projects tracker — confirm whether these are the same thing.">
+          <span style="font-size:12px; color:var(--ink);">Studio Style Guide</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
+          <span style="font-size:12px; color:var(--ink);">TGD Podcast</span>
+          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Teggin Summers Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Thinking Habits Explainer</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Slack List: &quot;Thinking Habits Podcast Task Tracker&quot;.">
+          <span style="font-size:12px; color:var(--ink);">Thinking Habits Podcast</span>
+          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        </div>
+<!-- /BUILD:REGISTRY_INTERNAL -->
+        </div>
+      </div>
     </div>
   </div>
 

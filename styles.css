@@ -101,6 +101,7 @@ header {
 .source-podio { background: var(--podio-light); color: var(--podio); }
 .source-slack { background: var(--slack-light); color: var(--slack); }
 .source-local { background: var(--cardinal-dim); color: var(--cardinal); }
+.source-none { background: var(--surface-2); color: var(--ink-soft); }
 .dash-card-meta { font-size: 11px; color: var(--ink-soft); }
 
 /* PLACEHOLDER STATE */
