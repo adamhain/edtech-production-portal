@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backups — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <a href="backups.html" class="nav-tab active">Backups</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Data Protection</p>
+      <h1>Backups &amp; <em>archiving.</em></h1>
+      <p class="hero-desc">How raw footage, active project files, and finished deliverables move from ingest through to long-term storage — and when they get deleted. This is the target design for the pipeline, not yet a live system (see status below).</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="mock-notice" style="margin-bottom: 24px;">
+    ⚠️ <strong>Planning stage:</strong> nothing on this page is automated yet. The steps and retention windows below describe the intended process — until each piece is built, treat this as the plan, not a safety net. See "Backup Status" for what's built vs. still to do.
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Backup &amp; Archiving Flow</div>
+      <span class="dash-card-meta">Source diagram, Aug 2026</span>
+    </div>
+    <img src="backup_flow_diagram.png" alt="Backup and archiving flow diagram" style="width:100%; height:auto; border-radius: 8px; border: 1px solid var(--border);">
+  </div>
+
+  <div class="dashboard-grid wide" style="margin-bottom: 24px;">
+
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">Backup &amp; Archiving Process</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:18px;">
+
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">1. Ingest</div>
+          <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Raw footage from a new project is ingested onto the <strong>Edtech NAS</strong> — the central store everything else backs up from.</p>
+        </div>
+
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">2. Automated fan-out backup</div>
+          <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">From Edtech NAS, three automated copy jobs push the same raw footage out to three separate destinations: <strong>TDS NAS</strong>, <strong>Google Drive</strong>, and <strong>Blackmagic (BM) Cloud Store</strong>. Three independent copies, so no single storage failure loses the footage.</p>
+        </div>
+
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">3. Active production</div>
+          <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">During editing, Blackmagic Cloud Store stays synced with the editor's <strong>local storage</strong> through a mirrored <em>shot structure</em> — the same folder tree (Graphic/, Soundtrack/, Project Files/, Export/, each with their app-specific subfolders) exists in both places for the life of the production.</p>
+        </div>
+
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">4. End of production → Archiving</div>
+          <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Once production wraps, an archiving step consolidates everything worth keeping into two packages, written back to Edtech NAS:</p>
+          <ul style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:6px 0 0; padding-left:18px;">
+            <li><strong>Final Assets</strong> — rendered deliverables (FINAL/PRORES/H.265 in 4K &amp; 1080p) plus final images and sound.</li>
+            <li><strong>Consolidated Shots</strong> — the full working project files (After Effects, DaVinci Resolve, Premiere, Photoshop, Illustrator), organized by Shot and Sequence.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">5. Cleanup</div>
+          <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Once the archive is confirmed on Edtech NAS, the working copies are deleted — including the Blackmagic Cloud Store shot-structure replication. The Edtech NAS archive is the copy of record from this point on.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">Retention &amp; Deletion</div>
+      </div>
+      <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0 0 14px;">Nothing in this pipeline is kept forever — two separate 1-year timers apply:</p>
+
+      <div style="background:var(--surface); border-radius:var(--radius); padding:14px; margin-bottom:12px;">
+        <div style="font-size:12px; font-weight:600; color:var(--ink); margin-bottom:4px;">Raw footage</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.5;">Deleted from Edtech NAS <strong>1 year</strong> after ingest.</div>
+      </div>
+
+      <div style="background:var(--surface); border-radius:var(--radius); padding:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--ink); margin-bottom:4px;">Archived deliverables &amp; project files</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.5;">Deleted from Edtech NAS <strong>1 year</strong> after archiving. Nothing from a completed production is retained permanently under the current design — if a project needs longer retention, that has to be called out and handled separately.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dash-card">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Backup Status</div>
+      <span class="badge" style="background:var(--yellow-light); color:var(--yellow);">Planned — nothing live yet</span>
+    </div>
+    <p style="font-size:12px; color:var(--ink-soft); line-height:1.6; margin:0 0 16px;">Intended to run as scripted/cron jobs with logs this page can eventually read for live last-run status. Until built, every step below is manual or nonexistent — check this list, not an assumption, before relying on any of it.</p>
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">📼</div>
+        <div class="resource-info">
+          <div class="resource-title">Edtech NAS → TDS NAS (raw footage backup)</div>
+          <div class="resource-meta">Automated copy job — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">☁️</div>
+        <div class="resource-info">
+          <div class="resource-title">Edtech NAS → Google Drive (raw footage backup)</div>
+          <div class="resource-meta">Automated copy job — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">🎬</div>
+        <div class="resource-info">
+          <div class="resource-title">Edtech NAS → Blackmagic Cloud Store (raw footage backup)</div>
+          <div class="resource-meta">Automated copy job — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">🔄</div>
+        <div class="resource-info">
+          <div class="resource-title">Shot-structure sync (BM Cloud Store ⇄ local storage)</div>
+          <div class="resource-meta">Keeps the working folder tree mirrored during production — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">📦</div>
+        <div class="resource-info">
+          <div class="resource-title">Archiving pipeline (Final Assets + Consolidated Shots → Edtech NAS)</div>
+          <div class="resource-meta">Runs at end of production — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">🧹</div>
+        <div class="resource-info">
+          <div class="resource-title">Post-archive cleanup (BM Cloud Store + local working copies)</div>
+          <div class="resource-meta">Fires once archive is confirmed — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">⏳</div>
+        <div class="resource-info">
+          <div class="resource-title">Raw footage 1-year deletion timer</div>
+          <div class="resource-meta">Automated expiration off Edtech NAS — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+      <div class="resource-item" style="cursor:default;">
+        <div class="resource-icon">⏳</div>
+        <div class="resource-info">
+          <div class="resource-title">Archive 1-year deletion timer</div>
+          <div class="resource-meta">Automated expiration off Edtech NAS — not built</div>
+        </div>
+        <div class="prod-status status-pending">Planned</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
