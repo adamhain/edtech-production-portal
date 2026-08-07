@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingest — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="ingest.html" class="nav-tab active">Ingest</a>
+      <a href="backups.html" class="nav-tab">Backups</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">IngestMaster</p>
+      <h1>Raw footage → <em>Resolve-ready.</em></h1>
+      <p class="hero-desc">A tool that takes a raw camera/audio ingest folder and turns it into an organized, Resolve-ready project — automatically. No Terminal required.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="mock-notice" style="margin-bottom: 24px;">
+    🧪 <strong>Currently being tested</strong> — and so far only confirmed to work on <strong>macOS</strong>. Treat it as a beta tool: watch the log while it runs, and don't assume a result is correct without checking Resolve afterward.
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">What It Does</div>
+    </div>
+    <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0 0 14px;">You point it at a folder of raw footage. It runs 5 steps in order:</p>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">1. Organize files</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Sorts everything into <code>Camera/</code>, <code>Audio/</code>, and <code>Garbage/</code> inside your chosen output folder. It figures out which audio files are real mics (checks the filename <em>and</em> confirms there's actual signal, not just silence) vs. camera audio tracks, mic/RCA scratch tracks, and switcher junk.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">2. Confirm audio</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Lists what was kept and what it's about to do next.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">3. Convert to mono</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Each stereo audio file gets split into Left and Right mono tracks. Whichever side actually has your mic on it stays in <code>Audio/</code>; the silent side goes to <code>Audio/Garbage/</code>. The original stereo files are kept in <code>Audio/Originals/</code>.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">4. Build the Resolve project</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Creates a new DaVinci Resolve project, imports everything into Camera and Audio Mono bins, and auto-syncs audio to camera clips by timecode.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">5. Trigger transcription</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Attempts to kick off Resolve's transcription via its API. This mostly doesn't work yet (see Limitations) and prints manual steps instead.</p>
+      </div>
+    </div>
+
+    <div class="data-notice" style="margin-top:16px; margin-bottom:0;">
+      ✅ <strong>Nothing is ever deleted.</strong> "Garbage" just means a subfolder — camera audio tracks, silent mic channels, switcher junk, all of it is moved there, never sent to the Trash. If the tool ever files something wrong, it's still on disk and recoverable.
+    </div>
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">How to Use It</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">1. Open the app</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Double-click <code>launch_ingest_master.command</code> in the IngestMaster folder (or it may already be running).</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">2. Ingest Folder</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Drag your raw footage folder onto the field, or click Browse.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">3. Output Folder</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Drag or Browse to a folder where you want the organized result to land. This can be a new empty folder anywhere with enough free space — it doesn't need to exist yet if using Browse's "New Folder" option.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">4. Project Name</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Type a name for the new DaVinci Resolve project it'll create.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">5. "Skip Resolve steps" checkbox</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Leave it unchecked if DaVinci Resolve Studio is open and ready to go. Check it if you just want the files organized and converted, without touching Resolve at all.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">6. Run</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Click Run Pipeline and watch the log. The llama munches hay while it works. When it's done, the log says so and the llama goes back to idle.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">7. Check Resolve</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Open the new project. If it was a multicam shoot, the log will print exactly which clips belong together per take — that part still has to be done by hand (see Limitations below).</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">If something's wrong before it even starts</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">The llama goes puzzled and the log shows a warning at the top. Read that before assuming it's broken — usually it just means a field was left blank or a folder wasn't found.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Limitations</div>
+    </div>
+    <ul style="font-size:12px; color:var(--ink-mid); line-height:1.7; margin:0; padding-left:18px;">
+      <li><strong>Multicam clips aren't created automatically.</strong> DaVinci Resolve's scripting API has no function for building a multicam clip — that's a Resolve-UI-only feature. The tool auto-syncs audio to each camera angle by timecode, then prints a per-take instruction list (which clips to Ctrl-click, then "Create New Multicam Clip Using Selected Clips" in Resolve) for you to do manually. Takes about a minute per take.</li>
+      <li><strong>Transcription is mostly manual too</strong>, for the same reason — Resolve's API doesn't yet expose full transcription controls. The tool documents the manual steps in the log rather than pretending it did it for you.</li>
+      <li><strong>Requires DaVinci Resolve Studio</strong> (the paid version — the free version has no scripting API) already open, with Preferences &gt; General &gt; External scripting using set to "Local network." Steps 4 and 5 will fail with a clear error if Resolve isn't running.</li>
+      <li><strong>Built around MADI-style audio naming.</strong> It looks for filenames containing "MADI {number}" and auto-detects however many MADI channels are actually present in your footage — works whether a take used 2 mics or 14. A different mic/interface naming scheme would need a script tweak.</li>
+      <li><strong>All camera angles land in one Camera bin</strong>, not separated by camera number — Resolve's multicam step (above) is what actually organizes by angle.</li>
+      <li><strong>It reorganizes what's already on your drive — it is not a backup.</strong> Keep your normal backup process in place regardless.</li>
+      <li><strong>The app doesn't save its log to disk.</strong> If a run does something unexpected, screenshot the log or note what it said before closing the window — there's currently no way to recover it afterward.</li>
+      <li><strong>Needs ffmpeg installed</strong> on the machine (for audio analysis/conversion) — the launcher will tell you if it's missing.</li>
+    </ul>
+  </div>
+
+  <div class="dash-card">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Quick Troubleshooting</div>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr><th style="text-align:left;">Symptom</th><th style="text-align:left;">Likely Cause</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left;">Llama goes puzzled immediately</td>
+            <td style="text-align:left;">A required field was blank, or the folder path didn't resolve — check the log's warning line</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Output folder stays empty after clicking Run</td>
+            <td style="text-align:left;">Same as above — the run never actually started; re-check Ingest/Output/Project Name fields</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Step 4/5 fail with a connection error</td>
+            <td style="text-align:left;">DaVinci Resolve Studio isn't open, or External Scripting isn't enabled in Preferences</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">A mic you expected is missing from Audio/</td>
+            <td style="text-align:left;">Check Garbage/ and Audio/Garbage/ — it's very likely there, just flagged as silent on that channel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
