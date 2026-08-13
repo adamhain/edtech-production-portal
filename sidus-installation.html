@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidus Installation — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="ingest.html" class="nav-tab">Ingest</a>
+      <a href="backups.html" class="nav-tab">Backups</a>
+      <a href="production-roles.html" class="nav-tab">Production Lead Roles</a>
+      <a href="sidus-installation.html" class="nav-tab active">Sidus Installation</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Studio Equipment</p>
+      <h1>Sidus <em>Installation.</em></h1>
+      <p class="hero-desc">Setup and lighting-control training for the studio's Sidus Link ecosystem — Aputure's Bluetooth/DMX lighting-control app and the Sidus One wireless transmitter. Full 19-episode official user-guide video series, embedded below, plus manuals and app downloads.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="data-notice" style="margin-bottom: 24px;">
+    ✅ <strong>Studio-owned gear:</strong> Sidus One wireless DMX transmitter + Sidus One DMX 2-Way Splitter Cable (purchased May 2026), and a Sidus Link Pro subscription (App Store, pending as of July 2026) — see the Master Equipment List for line-item detail. These videos cover setup and use of that exact hardware/software combination.
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">What Is Sidus Link?</div>
+    </div>
+    <p style="font-size:13px; color:var(--ink-mid); line-height:1.7; margin:0;">Sidus Link is Aputure's lighting-control app — free for Bluetooth control of Aputure/amaran fixtures, or upgraded to <strong>Sidus Link Pro</strong> (iPad/Mac) for DMX and wireless CRMX control across any manufacturer's fixtures once paired with Sidus hardware like the <strong>Sidus One</strong> transmitter. This is the app/hardware pairing the studio uses for lighting control in shoots that need more than on-fixture Bluetooth range or per-light adjustment — patching, cues, and multi-light "looks" all live in the app instead of walking to each fixture.</p>
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Video Guide Series</div>
+      <span class="dash-card-meta">19 videos · Aputure's official Sidus Link Pro User Guide Series</span>
+    </div>
+    <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0 0 16px;">
+      Play any video inline below, in order or out of order — episodes 1–3 and 7 are the core setup/patching/DMX-fundamentals watch for anyone new to the app; the rest cover feature updates as Sidus Link Pro has evolved.
+      <a href="https://www.youtube.com/playlist?list=PLjnBD0tWOQ1_Celeqt5YZBcsLVbFTrD-x" target="_blank" rel="noopener">Open the full playlist on YouTube instead <span class="arrow">↗</span></a>
+    </p>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/iaUovRFqoS0" title="Ep.1: The Setup | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 1: The Setup</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/_ycOWTEIqEQ" title="Ep. 2: Adding & Patching Lights | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 2: Adding &amp; Patching Lights</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/pC2VuvgDCDM" title="Ep. 3: Controlling Light Parameters | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 3: Controlling Light Parameters</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/a6qWIZ541xs" title="Ep. 4: What's New in Sidus Link Pro v1.1 | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 4: What's New in Sidus Link Pro v1.1</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/zAdEnu3gUVo" title="Ep. 5: Recording Cues, Masters, and Cue Stacks | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 5: Recording Cues, Masters, and Cue Stacks</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/4gyI2OK_U18" title="Ep. 6: Editing & Running Cues and Workflow | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 6: Editing &amp; Running Cues and Workflow</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/AkylrF6Ctqo" title="Ep. 7: What is Lighting Control & DMX? | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 7: What Is Lighting Control &amp; DMX?</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/D2s15YAsnVA" title="Ep. 8: What's New in Sidus Link Pro Version 1.3 | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 8: What's New in Sidus Link Pro v1.3</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/jvRQlj1upJ4" title="Ep. 9: What's New in Sidus Link Pro 2.0 | Sidus Link Pro User Guide Series" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Ep. 9: What's New in Sidus Link Pro 2.0</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/94mU4X53wpw" title="Quick Start Guide | Sidus Link Pro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Quick Start Guide</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/kZOfzowL5Tw" title="Introducing Sidus One & Sidus Link Pro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Introducing Sidus One &amp; Sidus Link Pro</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/UdNzEDK0uXI" title="What is Sidus Link Pro & Sidus One?" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">What Is Sidus Link Pro &amp; Sidus One?</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/t5M1WJ_IKu8" title="Introducing Sidus Link Pro 2.0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Introducing Sidus Link Pro 2.0</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/O7byJwZfwnk" title="Introducing Sidus Link Pro 2.1: New Free Plan" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Introducing Sidus Link Pro 2.1: New Free Plan</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/q9XL1Zc5bzU" title="What's New in Sidus Link Pro 2.2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">What's New in Sidus Link Pro 2.2</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/YBZ4yWcgUf4" title="Introducing Layout View | Sidus Link Pro 2.2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Introducing Layout View</div>
+        <div class="video-meta">Sidus Link Pro 2.2</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/ye6yJGY3TcE" title="Introducing 3D Visualizer | Sidus Link Pro 2.3" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Introducing 3D Visualizer</div>
+        <div class="video-meta">Sidus Link Pro 2.3</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/bcEfjC3T2CQ" title="What's New in Sidus Link Pro 2.3" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">What's New in Sidus Link Pro 2.3</div>
+        <div class="video-meta">Sidus Link Pro User Guide Series</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/2B0ziU9LLvc" title="Introducing Action Panel and Mac Support | Sidus Link Pro 2.4" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-title">Introducing Action Panel and Mac Support</div>
+        <div class="video-meta">Sidus Link Pro 2.4</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dash-card">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Resources &amp; Relevant Links</div>
+    </div>
+    <div class="resource-list">
+
+      <a class="resource-item" href="https://www.aputure.com/" target="_blank" rel="noopener">
+        <div class="resource-icon">🏭</div>
+        <div class="resource-info">
+          <div class="resource-title">Aputure — manufacturer site</div>
+          <div class="resource-meta">Makes Sidus Link, Sidus One, and the studio's Light Storm/amaran fixtures — opens in a new tab. (Note: "Aputure," not "Aperture" — a similarly-named residential lighting installer is a different, unrelated company.)</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://aputure.com/en-US/pages/sidus-link" target="_blank" rel="noopener">
+        <div class="resource-icon">💡</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link — app overview</div>
+          <div class="resource-meta">Free Bluetooth control for Aputure/amaran fixtures — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://aputure.com/en-US/pages/sidus-link-pro" target="_blank" rel="noopener">
+        <div class="resource-icon">🎛️</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link Pro — app overview</div>
+          <div class="resource-meta">iPad/Mac lighting console — DMX + wireless CRMX via Sidus hardware, any manufacturer — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://aputure.com/en-US/pages/sidus-resources" target="_blank" rel="noopener">
+        <div class="resource-icon">📚</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link App Resources</div>
+          <div class="resource-meta">Aputure's own tutorial/resource hub for Sidus Link — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://help.aputure.com/en/sidus-link-pro" target="_blank" rel="noopener">
+        <div class="resource-icon">🛟</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link Pro Help Center</div>
+          <div class="resource-meta">Aputure support docs and troubleshooting — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/Sidus%20One/Sidus%20One%20Manual%20EN%20v1.0.pdf" target="_blank" rel="noopener">
+        <div class="resource-icon">📄</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus One — official product manual (PDF)</div>
+          <div class="resource-meta">The exact transmitter the studio owns — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://apps.apple.com/us/app/sidus-link-pro/id1574126730" target="_blank" rel="noopener">
+        <div class="resource-icon">📱</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link Pro — download (iPad / Mac App Store)</div>
+          <div class="resource-meta">Opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://apps.apple.com/us/app/sidus-link/id1471951977" target="_blank" rel="noopener">
+        <div class="resource-icon">📱</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link — download (iOS App Store)</div>
+          <div class="resource-meta">Opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://play.google.com/store/apps/details?id=creativity.intelligence.application.sidus.link" target="_blank" rel="noopener">
+        <div class="resource-icon">📱</div>
+        <div class="resource-info">
+          <div class="resource-title">Sidus Link — download (Google Play)</div>
+          <div class="resource-meta">Opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+      <a class="resource-item" href="https://www.youtube.com/playlist?list=PLjnBD0tWOQ1_Celeqt5YZBcsLVbFTrD-x" target="_blank" rel="noopener">
+        <div class="resource-icon">▶️</div>
+        <div class="resource-info">
+          <div class="resource-title">Full "Sidus Link Pro User Guide Series" playlist on YouTube</div>
+          <div class="resource-meta">Same 19 videos embedded above, on YouTube directly — opens in a new tab</div>
+        </div>
+        <div class="resource-arrow">↗</div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
