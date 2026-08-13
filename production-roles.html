@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production Lead Roles — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="ingest.html" class="nav-tab">Ingest</a>
+      <a href="backups.html" class="nav-tab">Backups</a>
+      <a href="production-roles.html" class="nav-tab active">Production Lead Roles</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Project Workflow</p>
+      <h1>Production Lead <em>roles &amp; expectations.</em></h1>
+      <p class="hero-desc">EdTech's standard project intake and lifecycle — what the Project Manager (PM), Instructional Design (ID) Lead, and Production Lead each own at every phase, from first consult request through retrospective. Source: "EdTech Standard Project Intake and Expectations" (Google Doc).</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="section-header">
+    <h2>Project Phases</h2>
+    <span>Click any phase to expand</span>
+  </div>
+
+  <div class="roles-grid">
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">01</span>
+        <div class="role-title-wrap"><div class="role-title">Pre-Consultation &amp; Intake</div><div class="role-subtitle">Handled entirely by the Project Manager (PM)</div></div>
+        <div class="role-tags"><span class="tag tag-li">PM</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <div class="duties-grid">
+          <div class="duty"><strong>Handle Incoming Requests:</strong> The PM posts the consult request to the Slack channel, including a link to the Podio form, and tags expected invitees.</div>
+          <div class="duty"><strong>Send Receipts:</strong> The PM responds with a Consult Submission Receipt.</div>
+          <div class="duty"><strong>Schedule Consult:</strong> The PM responds within 2 business days of the submission with a Calendly link to schedule the consultation.</div>
+          <div class="duty"><strong>Notify Attendees:</strong> The PM sends the Consultation Appointment Notification with the agenda and expectations.</div>
+          <div class="duty"><strong>Set Up Digital Workspace:</strong> The PM creates a consult Google folder with a Documents sub-folder.</div>
+          <div class="duty"><strong>Create Project Documents:</strong> The PM creates the Project Design Binder, the Consult Agenda, and the project Learning Design Document (LDD).</div>
+          <div class="duty"><strong>Send Invites:</strong> The PM creates the consult calendar invite, adds necessary EdTech team members, and creates a second 30-minute follow-up invite for an EdTech debrief.</div>
+          <div class="duty"><strong>Follow Up:</strong> The PM summarizes the consult and sends the follow-up email with the linked LDD template.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">02</span>
+        <div class="role-title-wrap"><div class="role-title">Pre-Prioritization</div><div class="role-subtitle">Handled entirely by the PM</div></div>
+        <div class="role-tags"><span class="tag tag-li">PM</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <div class="duties-grid">
+          <div class="duty"><strong>Estimate Costs:</strong> The PM creates a good-faith estimate and project scope to ensure adequate funding from the client team and inform prioritization.</div>
+          <div class="duty"><strong>Client Communication:</strong> The PM follows up with the client to share the good-faith estimate and outline expectations for next steps.</div>
+          <div class="duty"><strong>Submit Project:</strong> The PM adds the project to the next prioritization docket.</div>
+          <div class="duty"><strong>Schedule Follow-ups:</strong> As needed, PM schedules a follow-up client meeting and creates the corresponding agenda.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">03</span>
+        <div class="role-title-wrap"><div class="role-title">Project Initiation &amp; Setup</div><div class="role-subtitle">Post-Prioritization — PM, ID Lead, and Production Lead</div></div>
+        <div class="role-tags"><span class="tag tag-li">PM</span><span class="tag tag-yt">ID Lead</span><span class="tag tag-li">Production Lead</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <div class="duties-grid">
+          <div class="duty"><strong>Communicate Decisions:</strong> The PM sends the official project acceptance or rejection email to the client.</div>
+          <div class="duty"><strong>Transition Workspaces:</strong> The PM converts the consult Google drive into the project drive.</div>
+          <div class="duty"><strong>Create Communication Channels:</strong> The PM creates the project Slack channel, ensuring the Production Lead and ID Lead are included.</div>
+          <div class="duty"><strong>Schedule Initial Meetings:</strong> The PM schedules the Internal Handoff, the Client Logistics Meeting, and the Client Meet and Greet.</div>
+          <div class="duty"><strong>Attend Initial Meetings:</strong> The ID Lead and Production Lead attend the Internal Handoff, Client Logistics Meeting, and Client Meet and Greet.</div>
+          <div class="duty"><strong>Schedule Kick-offs:</strong> The ID Lead schedules the Internal Kick-off (with all lifetime team members) and the main Project Kick-off.</div>
+          <div class="duty"><strong>Finalize Scope &amp; Charter:</strong> The ID Lead and PM jointly finalize the Scope of Work and Project Charter, and schedule a meeting with Teggin to finalize them if needed.</div>
+          <div class="duty"><strong>Obtain Sign-offs:</strong> The ID Lead, Production Lead, and PM jointly secure official sign-off on the Project Charter.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">04</span>
+        <div class="role-title-wrap"><div class="role-title">Execution &amp; Production</div><div class="role-subtitle">During the project — broken out by role below</div></div>
+        <div class="role-tags"><span class="tag tag-li">PM</span><span class="tag tag-yt">ID Lead</span><span class="tag tag-li">Production Lead</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+
+        <div class="resources-label">Project Manager (PM)</div>
+        <div class="duties-grid">
+          <div class="duty"><strong>Constraint Management:</strong> Actively conduct overall project management by monitoring budget, timeline, and available resources to keep the project on track.</div>
+          <div class="duty"><strong>Meeting Facilitation:</strong> Check progress asynchronously, weekly if needed and as outlined in the communication agreements, capturing action items and tracking progress.</div>
+          <div class="duty"><strong>Blocker Removal:</strong> Serve as the primary point of escalation for logistical issues, ensuring the Production and ID teams have what they need from Subject Matter Experts (SMEs) to proceed.</div>
+        </div>
+
+        <div class="resources-label" style="margin-top:20px;">Instructional Designer (ID Lead)</div>
+        <div class="duties-grid">
+          <div class="duty"><strong>Content Development:</strong> Transform SME materials into structured educational materials, starting in the Learning Design Document (LDD). Work with Production Lead to create storyboard and scripts.</div>
+          <div class="duty"><strong>Pedagogical Alignment:</strong> Review all media and content being produced to ensure alignment with the learning objectives agreed upon in the Project Charter.</div>
+          <div class="duty"><strong>LMS Integration:</strong> Build out the actual course within the Learning Management System (e.g., Canvas), inputting text, organizing modules, and placing media assets.</div>
+          <div class="duty"><strong>Script Writing and Supervision:</strong> With Production Lead, determine at the start of the project the timeline and specific deliverables required from the client regarding the script. Jointly review script progress throughout the life of the project. Attend shoots to ensure the script is fully covered, or work with the Production Lead to designate a script supervisor. Report to the PM and project team if the script is over 2 weeks behind schedule per timeline; work with the Production Lead to adjust the project timeline with each delay and communicate the new timeline to the PM and team.</div>
+        </div>
+
+        <div class="resources-label" style="margin-top:20px;">Production Lead</div>
+        <div class="duties-grid">
+          <div class="duty"><strong>Media Execution:</strong> Direct shoots, record audio, create animations, or develop interactive media elements as defined by the storyboards. The Production Lead is responsible for the project management of the production assets/aspects of the project, including the timeline, deliverable management, and client communication regarding production.</div>
+          <div class="duty"><strong>Review Management (ftrack):</strong> Upload media assets to the ftrack management system, generate review links, and ensure feedback from the ID Lead and SMEs is integrated into the next version.</div>
+          <div class="duty"><strong>Script Writing and Supervision:</strong> With ID Lead, determine at the start of the project the timeline and specific deliverables required from the client regarding the script. Jointly review script progress throughout the life of the project. Jointly determine specifically who will be the script supervisor for each shoot. Report to the PM and project team if the script is over 2 weeks behind schedule per timeline; work with the ID Lead to adjust the project timeline with each delay and communicate the new timeline to the PM and team.</div>
+          <div class="duty"><strong>Quality &amp; Accessibility Assurance:</strong> Ensure all media files use proper naming conventions, maintain version control, and meet strict accessibility standards (e.g., proper color contrast, captioning).</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">05</span>
+        <div class="role-title-wrap"><div class="role-title">Post-Project &amp; Closeout</div><div class="role-subtitle">ID Lead, Production Lead, and PM</div></div>
+        <div class="role-tags"><span class="tag tag-yt">ID Lead</span><span class="tag tag-li">Production Lead</span><span class="tag tag-li">PM</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <div class="duties-grid">
+          <div class="duty"><strong>Send Closeout Communications:</strong> The ID Lead sends the Client Retrospective Form and the final closeout email.</div>
+          <div class="duty"><strong>Schedule Retrospectives:</strong> The ID Lead schedules both the Client Retrospective and the Internal Retrospective meetings.</div>
+          <div class="duty"><strong>Evaluate Conference Potential:</strong> The ID Lead identifies if the project is worthy of conference proposals or research.</div>
+          <div class="duty"><strong>Organize Digital Assets:</strong> The ID Lead and Production Lead collaborate to organize the final Google Drive.</div>
+          <div class="duty"><strong>Archive Media:</strong> The Production Lead (and team) archives media assets to the Media Library (both in Google Drive and on Server) and identifies candidates for reuse on other projects.</div>
+          <div class="duty"><strong>Manage Client Access:</strong> The Production team adds everything SME-facing (final scripts, sign-offs, assets) to the final work folder and removes their access from all other project folders.</div>
+          <div class="duty"><strong>Develop Marketing Materials:</strong> The ID Lead and Production Lead (with assistance from the PM) create the Internal Marketing Documentation/Marketing Packet, as needed.</div>
+          <div class="duty"><strong>Coordinate Marketing Launch:</strong> The ID Lead and Production Lead determine various needs for the marketing document, and submit a communication request to TDS or Stanford Healthcare alongside Teggin.</div>
+          <div class="duty"><strong>Administrative Closeout:</strong> The PM closes out the billing processes, Podio records, project Slack channel, and Service Now record.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card" onclick="toggle(this)">
+      <div class="role-header">
+        <span class="role-num">06</span>
+        <div class="role-title-wrap"><div class="role-title">Retrospective</div><div class="role-subtitle">All team members — ID, Production, PM</div></div>
+        <div class="role-tags"><span class="tag tag-li">All Team</span></div>
+        <span class="role-toggle">⌄</span>
+      </div>
+      <div class="role-body">
+        <div class="duties-grid">
+          <div class="duty"><strong>Prepare Feedback:</strong> All team members (ID, Production, PM) review "Start, Stop, Continue" feedback for their specific processes.</div>
+          <div class="duty"><strong>General Participation:</strong> All internal participants attend and participate in actionable conversation, provide shoutouts for team members, and review project goals/objectives.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="data-notice" style="margin-top:24px;">
+    📄 Source document: <a href="https://docs.google.com/document/d/1AWZK0dN4lZv0Z7Rgtg-nT8ooSBow7-Z9xwTtNzZw6O8/edit" target="_blank" rel="noopener">EdTech Standard Project Intake and Expectations ↗</a> — this page mirrors that Google Doc's content as of Aug 2026. If the doc changes, update it here to match.
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+<script>
+  function toggle(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.role-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
