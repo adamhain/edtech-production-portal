@@ -268,6 +268,41 @@ header {
 .resource-list li a:hover { background: var(--surface-2); color: var(--ink); }
 .resource-list li a .arrow { font-size: 10px; opacity: 0.4; margin-left: auto; }
 
+/* PRODUCTION ROLES — DUTY-BY-ROLE TABLE (production-roles.html) */
+.duty-table-wrap { overflow-x: auto; }
+.duty-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 13px; }
+.duty-table thead th {
+  text-align: left; padding: 0 14px 10px; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft);
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.duty-table thead th.role-col { width: 130px; text-align: center; }
+.duty-table thead th.duty-col { width: 200px; }
+.duty-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.duty-table tbody tr:last-child td { border-bottom: none; }
+.duty-table tr.group-start td { border-top: 2px solid var(--surface-2); }
+.duty-table td.role-cell { text-align: center; vertical-align: middle; }
+.duty-table td.duty-name-cell { font-weight: 600; color: var(--ink); font-size: 13px; white-space: nowrap; }
+.duty-table td.duty-desc-cell { color: var(--ink-mid); font-size: 13px; line-height: 1.6; font-weight: 300; }
+.duty-note { display: block; font-size: 11px; font-weight: 400; font-style: italic; color: var(--ink-soft); margin-top: 3px; white-space: normal; }
+
+.role-pill {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
+  padding: 5px 11px; border-radius: 20px; white-space: nowrap;
+}
+.role-pill-sm { font-size: 10px; font-weight: 600; padding: 3px 8px; }
+.role-pill-pm { background: var(--accent-light); color: var(--accent); }
+.role-pill-id { background: var(--yellow-light); color: var(--yellow); }
+.role-pill-prod { background: var(--green-light); color: var(--green); }
+.role-pill-shared { background: var(--surface-2); color: var(--ink-mid); }
+.role-pill-all { background: var(--cardinal-dim); color: var(--cardinal); }
+.role-pill-group { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; align-items: center; }
+
+@media (max-width: 900px) {
+  .duty-table thead th.role-col { width: auto; }
+  .duty-table td.duty-name-cell { white-space: normal; }
+}
+
 /* FOOTER */
 footer { margin-top: 80px; padding: 32px 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--ink-soft); }
 footer strong { color: var(--cardinal); }
