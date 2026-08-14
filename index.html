@@ -49,6 +49,7 @@
       <a href="ingest.html" class="nav-tab">Ingest</a>
       <a href="backups.html" class="nav-tab">Backups</a>
       <a href="production-roles.html" class="nav-tab">Production Lead Roles</a>
+      <a href="project-progress.html" class="nav-tab">Project Progress</a>
       <a href="sidus-installation.html" class="nav-tab">Sidus Installation</a>
       <a href="resources.html" class="nav-tab">Resources</a>
       <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
@@ -57,7 +58,7 @@
     <div class="header-right">
       <span class="live-dot">Slack + Podio + Outlook live</span>
       <span class="badge"><!-- BUILD:LAST_UPDATED -->
-Aug 13, 2026
+Aug 14, 2026
 <!-- /BUILD:LAST_UPDATED --></span>
     </div>
   </div>
@@ -74,7 +75,7 @@ Aug 13, 2026
 <div class="main">
 
   <div class="data-notice">
-    ✅ <strong>Everything on this page is real data</strong> — Consultation Pipeline and Studio Usage are live from Podio and Outlook; Project Status, Recently Completed, and Studio Sub-Projects come from the latest Slack tracker exports; Cross-Training Matrix comes from <code>cross_training_matrix.xlsx</code> (Team Members moved to the Training &amp; Roles page). To refresh: drop new exports into <code>Continuously Updated CSVs/</code> and/or edit the matrix spreadsheet, then re-run <code>build_dashboard.py</code>.
+    ✅ <strong>Everything on this page is real data</strong> — Consultation Pipeline and Studio Usage are live from Podio and Outlook; Project Status comes from the <code>Production_Task_Trackers_Master</code> Sheet snapshot (full breakdown on the <a href="project-progress.html">Project Progress</a> page) and Studio Sub-Projects from the latest Slack tracker export; Cross-Training Matrix comes from <code>cross_training_matrix.xlsx</code> (Team Members moved to the Training &amp; Roles page). To refresh: drop new exports into <code>Continuously Updated CSVs/</code> and/or edit the matrix spreadsheet, then re-run <code>build_dashboard.py</code>.
   </div>
 
   <!-- ROW 1: Consultation Pipeline + Studio Usage -->
@@ -88,7 +89,7 @@ Aug 13, 2026
           <span class="source-pill source-podio">Podio</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:PODIO_PIPELINE_META -->
-14 active · synced Aug 13, 2026 3:40 PM
+14 active · synced Aug 14, 2026 10:16 AM
 <!-- /BUILD:PODIO_PIPELINE_META --></span>
       </div>
       <div class="production-list">
@@ -162,19 +163,11 @@ Aug 13, 2026
           <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:CALENDAR_META -->
-Next 4 event(s) · synced Aug 13, 2026 3:40 PM
+Next 3 event(s) · synced Aug 14, 2026 10:16 AM
 <!-- /BUILD:CALENDAR_META --></span>
       </div>
       <div class="studio-cal">
 <!-- BUILD:CALENDAR -->
-        <div class="cal-item">
-          <div class="cal-bar full"></div>
-          <div class="cal-info">
-            <div class="cal-date">Thursday, Aug 13</div>
-            <div class="cal-desc">Studio Installation</div>
-          </div>
-          <div class="cal-time">8:00am – 4:00pm</div>
-        </div>
         <div class="cal-item">
           <div class="cal-bar full"></div>
           <div class="cal-info">
@@ -243,48 +236,36 @@ Next 4 event(s) · synced Aug 13, 2026 3:40 PM
     </div>
   </div>
 
-  <!-- ROW 4: REAL data, generated from the Slack project tracker export -->
-  <div class="dashboard-grid" style="margin-bottom:20px;">
-
-    <!-- Project Status — % complete by Workflow Phase, aggregated across
-         all projects (not per-project) -->
-    <div class="dash-card">
-      <div class="dash-card-header">
-        <div class="dash-card-title">
-          Project Status
-          <span class="source-pill source-slack">Slack</span>
-        </div>
-        <span class="dash-card-meta">Overall % complete per project</span>
+  <!-- ROW 4: REAL data, from the Production_Task_Trackers_Master Sheet
+       snapshot (project_progress_master.csv). Full-width single card as of
+       2026-08-14 — the "Recently Completed" card that used to sit beside it
+       in a 2-up dashboard-grid was removed per Adam, so the grid wrapper
+       went with it rather than leaving a half-width orphan. -->
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">
+        Project Status
+        <span class="source-pill source-slack">Slack</span>
       </div>
-      <div class="proj-summary">
+      <span class="dash-card-meta"><!-- BUILD:PROGRESS_META -->
+17 projects · 197/523 tasks done · 38% overall · 8 linked, 9 not linked
+<!-- /BUILD:PROGRESS_META --></span>
+    </div>
+    <div class="proj-summary">
 <!-- BUILD:PROJECT_SUMMARY -->
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHFLAA8UT" target="_blank" rel="noopener">TGD Podcast <span class="proj-link-icon">↗</span></a>
+            <span class="proj-frac">23 / 27 done · 85%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:85%"></div></div>
+        </div>
         <div class="proj-row">
           <div class="proj-row-head">
             <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQXSDL2E8" target="_blank" rel="noopener">Aggarwal Podcast <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">22 / 33 done · 67%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:67%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMT9Q1K4" target="_blank" rel="noopener">Bladder Basics Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">28 / 28 done · 100%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0ARK9LMX0R" target="_blank" rel="noopener">Elevate Production Workflow <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">23 / 39 done · 59%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQCQNFU1M" target="_blank" rel="noopener">Gardner Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">28 / 28 done · 100%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
@@ -295,10 +276,38 @@ Next 4 event(s) · synced Aug 13, 2026 3:40 PM
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHFLAA8UT" target="_blank" rel="noopener">TGD Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">23 / 27 done · 85%</span>
+            <span class="proj-name">EM Podcast EP 4<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">0 / 15 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:85%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Neo Narratives Ep1<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">0 / 42 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Neo Narratives Ep2<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">0 / 42 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Neo Narratives Ep3<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">0 / 42 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">RMK Podcast<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">0 / 28 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
@@ -321,66 +330,50 @@ Next 4 event(s) · synced Aug 13, 2026 3:40 PM
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
         </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMT9Q1K4" target="_blank" rel="noopener">Bladder Basics Podcast <span class="proj-link-icon">↗</span></a>
+            <span class="proj-frac">28 / 28 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">CME Promotion<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">37 / 37 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">EM Podcast EP 1<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">15 / 15 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">EM Podcast EP 2<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">15 / 15 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">EM Podcast EP 3<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <span class="proj-frac">15 / 15 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQCQNFU1M" target="_blank" rel="noopener">Gardner Podcast <span class="proj-link-icon">↗</span></a>
+            <span class="proj-frac">28 / 28 done · 100%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+        </div>
+        <a class="proj-more-link" href="project-progress.html">See full breakdown by status, with completed/open counts →</a>
 <!-- /BUILD:PROJECT_SUMMARY -->
-      </div>
-    </div>
-
-    <!-- Recently Completed — from the legacy tracker CSV, which has a real
-         completion timestamp the new tracker doesn't -->
-    <div class="dash-card">
-      <div class="dash-card-header">
-        <div class="dash-card-title">
-          Recently Completed
-          <span class="source-pill source-slack">Slack</span>
-        </div>
-        <span class="dash-card-meta"><!-- BUILD:ACTIVITY_META -->
-73 rows in legacy export
-<!-- /BUILD:ACTIVITY_META --></span>
-      </div>
-      <div class="slack-list">
-<!-- BUILD:RECENT_ACTIVITY -->
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Production Crew/Skills Confirmed for Date <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
-          <div class="slack-assignee">adamhain · Scheduling</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Script Drafted <span style="color:var(--ink-soft);">— Elevate</span></div>
-          <div class="slack-assignee">adamhain · Pre-Production</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Set Design Implemented <span style="color:var(--ink-soft);">— Elevate</span></div>
-          <div class="slack-assignee">adamhain · Production Setup</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Script Drafted <span style="color:var(--ink-soft);">— Elevate</span></div>
-          <div class="slack-assignee">adamhain · Pre-Production</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Production Test Complete <span style="color:var(--ink-soft);">— Studio Promo Video</span></div>
-          <div class="slack-assignee">adamhain · Production Setup</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">SFX Design and Editing <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
-          <div class="slack-assignee">adamhain · Sound Design and Mix</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Color Correction Complete and Approved <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
-          <div class="slack-assignee">adamhain · Keying and Color</div>
-        </div>
-        <div class="slack-item">
-          <div class="slack-check done">✓</div>
-          <div class="slack-item-text done">Project and Footage Archived to Server and Secondary Backup <span style="color:var(--ink-soft);">— Gardner Podcast</span></div>
-          <div class="slack-assignee">adamhain · Achiving</div>
-        </div>
-<!-- /BUILD:RECENT_ACTIVITY -->
-      </div>
     </div>
   </div>
 
@@ -772,7 +765,7 @@ Next 4 event(s) · synced Aug 13, 2026 3:40 PM
       </div>
       <div style="background:var(--slack-light); border-radius:var(--radius); padding:20px;">
         <div style="font-size:13px; font-weight:700; color:var(--slack); margin-bottom:8px;">✅ Slack — connected via weekly export</div>
-        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Project Status and Studio Sub-Projects above are generated from manually-downloaded Slack Lists exports in <code>Continuously Updated CSVs/</code>; Recently Completed comes from the legacy tracker CSV, which still has real completion timestamps. All run through <code>build_dashboard.py</code>. Not live/real-time — refresh by re-running the script after each new export.</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Project Status is generated from <code>project_progress_master.csv</code>, a snapshot of the <code>Production_Task_Trackers_Master</code> Sheet's Summary tab; Studio Sub-Projects comes from a manually-downloaded Slack Lists export in <code>Continuously Updated CSVs/</code>. Both run through <code>build_dashboard.py</code>. Not live/real-time — refresh by re-running the script after each new export.</div>
         <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: weekly (manual)</div>
       </div>
       <div style="background:var(--accent-light); border-radius:var(--radius); padding:20px;">

@@ -303,6 +303,47 @@ header {
   .duty-table td.duty-name-cell { white-space: normal; }
 }
 
+/* PROJECT PROGRESS PAGE (project-progress.html) — additive; reuses
+   .dash-card / .proj-bar-track / .proj-bar-fill / .proj-name from above */
+.rollup-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.rollup-stat { background: var(--surface); border-radius: var(--radius); padding: 16px 14px; text-align: center; }
+.rollup-num { font-size: 1.6rem; font-weight: 700; color: var(--ink); line-height: 1.1; }
+.rollup-num.accent { color: var(--cardinal); }
+.rollup-label { font-size: 11px; color: var(--ink-soft); margin-top: 4px; }
+
+.pp-list { display: flex; flex-direction: column; gap: 18px; }
+.pp-row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.pp-row-meta { display: flex; gap: 6px; margin-top: 7px; flex-wrap: wrap; }
+.pp-chip { font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+.pp-chip-done { background: var(--green-light); color: var(--green); }
+.pp-chip-open { background: var(--yellow-light); color: var(--yellow); }
+
+.pp-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 22px; padding: 0 7px; border-radius: 20px;
+  font-size: 11px; font-weight: 700;
+}
+.pp-count-active { background: var(--yellow-light); color: var(--yellow); }
+.pp-count-done { background: var(--green-light); color: var(--green); }
+.pp-count-notstarted { background: var(--surface-2); color: var(--ink-soft); }
+
+/* Trackers with no Slack List URL on file — rendered as plain text with
+   this hint instead of a fabricated link. */
+.proj-unlinked {
+  margin-left: 8px; font-size: 10px; font-weight: 500; letter-spacing: 0.02em;
+  color: var(--ink-soft); background: var(--surface-2);
+  padding: 2px 7px; border-radius: 20px; white-space: nowrap;
+}
+.proj-more-link {
+  display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 500;
+  color: var(--accent); text-decoration: none;
+}
+.proj-more-link:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .rollup-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* VIDEO EMBEDS (sidus-installation.html) */
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .video-card { background: var(--surface); border-radius: var(--radius); padding: 14px; }

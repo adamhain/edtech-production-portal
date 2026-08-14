@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Progress — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="ingest.html" class="nav-tab">Ingest</a>
+      <a href="backups.html" class="nav-tab">Backups</a>
+      <a href="production-roles.html" class="nav-tab">Production Lead Roles</a>
+      <a href="project-progress.html" class="nav-tab active">Project Progress</a>
+      <a href="sidus-installation.html" class="nav-tab">Sidus Installation</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Project Tracking</p>
+      <h1>Project <em>progress.</em></h1>
+      <p class="hero-desc">Every production tracker in one place, grouped by where it actually stands — in progress, not started, or complete — with task counts behind each number. The Dashboard's Project Status card is the at-a-glance version of this; this page is the full breakdown.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">
+        Portfolio Rollup
+        <span class="source-pill source-slack">Slack</span>
+      </div>
+      <span class="dash-card-meta"><!-- BUILD:PROGRESS_META -->
+17 projects · 197/523 tasks done · 38% overall · 8 linked, 9 not linked
+<!-- /BUILD:PROGRESS_META --></span>
+    </div>
+<!-- BUILD:PROGRESS_ROLLUP -->
+        <div class="rollup-grid">
+          <div class="rollup-stat"><div class="rollup-num">17</div><div class="rollup-label">Projects tracked</div></div>
+          <div class="rollup-stat"><div class="rollup-num">523</div><div class="rollup-label">Total tasks</div></div>
+          <div class="rollup-stat"><div class="rollup-num">197</div><div class="rollup-label">Completed</div></div>
+          <div class="rollup-stat"><div class="rollup-num">326</div><div class="rollup-label">Open</div></div>
+          <div class="rollup-stat"><div class="rollup-num accent">38%</div><div class="rollup-label">Overall complete</div></div>
+        </div>
+<!-- /BUILD:PROGRESS_ROLLUP -->
+  </div>
+
+  <div class="section-header">
+    <h2>By Status</h2>
+    <span>Projects with a Slack List link open the tracker itself</span>
+  </div>
+
+<!-- BUILD:PROGRESS_GROUPS -->
+        <div class="dash-card" style="margin-bottom:20px;">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              In Progress
+              <span class="pp-count pp-count-active">3</span>
+            </div>
+            <span class="dash-card-meta">Started but not finished — these are the ones with live work on them.</span>
+          </div>
+          <div class="pp-list">
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHFLAA8UT" target="_blank" rel="noopener">TGD Podcast <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">23 / 27 done · 85%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:85%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">23 completed</span>
+                <span class="pp-chip pp-chip-open">4 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQXSDL2E8" target="_blank" rel="noopener">Aggarwal Podcast <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">22 / 33 done · 67%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:67%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">22 completed</span>
+                <span class="pp-chip pp-chip-open">11 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AKGEWMKLG" target="_blank" rel="noopener">Studio Promotional Video <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">14 / 30 done · 47%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:47%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">14 completed</span>
+                <span class="pp-chip pp-chip-open">16 open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-bottom:20px;">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              Not Started
+              <span class="pp-count pp-count-notstarted">8</span>
+            </div>
+            <span class="dash-card-meta">Tracker set up and tasks scoped, but nothing checked off yet.</span>
+          </div>
+          <div class="pp-list">
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">EM Podcast EP 4<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">0 / 15 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">15 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Neo Narratives Ep1<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">0 / 42 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">42 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Neo Narratives Ep2<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">0 / 42 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">42 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Neo Narratives Ep3<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">0 / 42 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">42 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">RMK Podcast<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">0 / 28 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">28 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNLQS7VTM" target="_blank" rel="noopener">UDN Video 1 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">0 / 42 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">42 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNV3HKQU9" target="_blank" rel="noopener">UDN Video 2 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">0 / 42 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">42 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNT5LK8PL" target="_blank" rel="noopener">UDN Video 3 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">0 / 42 done · 0%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">0 completed</span>
+                <span class="pp-chip pp-chip-open">42 open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-bottom:20px;">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              Complete
+              <span class="pp-count pp-count-done">6</span>
+            </div>
+            <span class="dash-card-meta">Every task in the tracker is checked off.</span>
+          </div>
+          <div class="pp-list">
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMT9Q1K4" target="_blank" rel="noopener">Bladder Basics Podcast <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">28 / 28 done · 100%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">28 completed</span>
+                <span class="pp-chip pp-chip-open">0 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">CME Promotion<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">37 / 37 done · 100%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">37 completed</span>
+                <span class="pp-chip pp-chip-open">0 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">EM Podcast EP 1<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">15 / 15 done · 100%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">15 completed</span>
+                <span class="pp-chip pp-chip-open">0 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">EM Podcast EP 2<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">15 / 15 done · 100%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">15 completed</span>
+                <span class="pp-chip pp-chip-open">0 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">EM Podcast EP 3<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+                <span class="proj-frac">15 / 15 done · 100%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">15 completed</span>
+                <span class="pp-chip pp-chip-open">0 open</span>
+              </div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQCQNFU1M" target="_blank" rel="noopener">Gardner Podcast <span class="proj-link-icon">↗</span></a>
+                <span class="proj-frac">28 / 28 done · 100%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+              <div class="pp-row-meta">
+                <span class="pp-chip pp-chip-done">28 completed</span>
+                <span class="pp-chip pp-chip-open">0 open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- /BUILD:PROGRESS_GROUPS -->
+
+  <div class="dash-card" style="margin-bottom:0;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">About This Data</div>
+    </div>
+    <ul style="font-size:12px; color:var(--ink-mid); line-height:1.7; margin:0; padding-left:18px;">
+      <li><strong>Source:</strong> the <em>Summary</em> tab of the "Production_Task_Trackers_Master" Google Sheet, which aggregates every per-task tracker into one row per project.</li>
+      <li><strong>Not live-synced.</strong> It's a manual point-in-time snapshot (same as Equipment Orders and Production Archive Status) — re-pulled by re-running the build after the Sheet changes, not on page load.</li>
+      <li><strong>Percentages are recomputed</strong> from the completed/total task counts rather than read from the Sheet, so a stale percentage cell can't disagree with the counts shown here.</li>
+      <li><strong>"not linked"</strong> means no Slack List URL is on file for that tracker yet — the progress numbers are still real. Ask Adam to add the link and it becomes clickable on the next build.</li>
+      <li><strong>Task-level detail</strong> (assignee, due date, workflow phase) lives in each project's Slack List, not here — this page deliberately stops at per-project counts.</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
