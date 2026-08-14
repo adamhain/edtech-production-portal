@@ -45,11 +45,11 @@
     </div>
     <nav class="nav-tabs">
       <a href="index.html" class="nav-tab active">Dashboard</a>
+      <a href="project-progress.html" class="nav-tab">Project Progress</a>
       <a href="training.html" class="nav-tab">Training &amp; Roles</a>
       <a href="ingest.html" class="nav-tab">Ingest</a>
       <a href="backups.html" class="nav-tab">Backups</a>
       <a href="production-roles.html" class="nav-tab">Production Lead Roles</a>
-      <a href="project-progress.html" class="nav-tab">Project Progress</a>
       <a href="sidus-installation.html" class="nav-tab">Sidus Installation</a>
       <a href="resources.html" class="nav-tab">Resources</a>
       <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
@@ -74,10 +74,6 @@ Aug 14, 2026
 
 <div class="main">
 
-  <div class="data-notice">
-    ✅ <strong>Everything on this page is real data</strong> — Consultation Pipeline and Studio Usage are live from Podio and Outlook; Project Status comes from the <code>Production_Task_Trackers_Master</code> Sheet snapshot (full breakdown on the <a href="project-progress.html">Project Progress</a> page) and Studio Sub-Projects from the latest Slack tracker export; Cross-Training Matrix comes from <code>cross_training_matrix.xlsx</code> (Team Members moved to the Training &amp; Roles page). To refresh: drop new exports into <code>Continuously Updated CSVs/</code> and/or edit the matrix spreadsheet, then re-run <code>build_dashboard.py</code>.
-  </div>
-
   <!-- ROW 1: Consultation Pipeline + Studio Usage -->
   <div class="dashboard-grid" style="margin-bottom:20px;">
 
@@ -89,7 +85,7 @@ Aug 14, 2026
           <span class="source-pill source-podio">Podio</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:PODIO_PIPELINE_META -->
-14 active · synced Aug 14, 2026 10:16 AM
+14 active · synced Aug 14, 2026 11:10 AM
 <!-- /BUILD:PODIO_PIPELINE_META --></span>
       </div>
       <div class="production-list">
@@ -163,7 +159,7 @@ Aug 14, 2026
           <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:CALENDAR_META -->
-Next 3 event(s) · synced Aug 14, 2026 10:16 AM
+Next 3 event(s) · synced Aug 14, 2026 11:10 AM
 <!-- /BUILD:CALENDAR_META --></span>
       </div>
       <div class="studio-cal">
@@ -248,7 +244,7 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
         <span class="source-pill source-slack">Slack</span>
       </div>
       <span class="dash-card-meta"><!-- BUILD:PROGRESS_META -->
-17 projects · 197/523 tasks done · 38% overall · 8 linked, 9 not linked
+19 projects · 235/601 tasks done · 39% overall · 19 linked, 0 not linked
 <!-- /BUILD:PROGRESS_META --></span>
     </div>
     <div class="proj-summary">
@@ -269,6 +265,20 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0ARK9LMX0R" target="_blank" rel="noopener">Elevate Production Workflow <span class="proj-link-icon">↗</span></a>
+            <span class="proj-frac">23 / 39 done · 59%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMTDSG4S" target="_blank" rel="noopener">RMK Podcast <span class="proj-link-icon">↗</span></a>
+            <span class="proj-frac">15 / 28 done · 54%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:54%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
             <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AKGEWMKLG" target="_blank" rel="noopener">Studio Promotional Video <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">14 / 30 done · 47%</span>
           </div>
@@ -276,36 +286,36 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">EM Podcast EP 4<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQ8VDBV0W" target="_blank" rel="noopener">EM Podcast EP 4 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">0 / 15 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">Neo Narratives Ep1<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AV62F763Z" target="_blank" rel="noopener">IDD Production Workflow <span class="proj-link-icon">↗</span></a>
+            <span class="proj-frac">0 / 39 done · 0%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQQNNMJ8G" target="_blank" rel="noopener">Neo Narratives Ep1 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">Neo Narratives Ep2<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BPWBTFZGS" target="_blank" rel="noopener">Neo Narratives Ep2 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">Neo Narratives Ep3<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQ03TR95J" target="_blank" rel="noopener">Neo Narratives Ep3 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">0 / 42 done · 0%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <span class="proj-name">RMK Podcast<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
-            <span class="proj-frac">0 / 28 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
         </div>
@@ -339,28 +349,28 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">CME Promotion<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0B07L23HRQ" target="_blank" rel="noopener">CME Promotion <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">37 / 37 done · 100%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">EM Podcast EP 1<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AJ250FYF8" target="_blank" rel="noopener">EM Podcast EP 1 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">15 / 15 done · 100%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">EM Podcast EP 2<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQCSHKA0H" target="_blank" rel="noopener">EM Podcast EP 2 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">15 / 15 done · 100%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <span class="proj-name">EM Podcast EP 3<span class="proj-unlinked" title="No Slack List link on file yet">not linked</span></span>
+            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BR597S0P2" target="_blank" rel="noopener">EM Podcast EP 3 <span class="proj-link-icon">↗</span></a>
             <span class="proj-frac">15 / 15 done · 100%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
@@ -378,27 +388,26 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
   </div>
 
   <!-- ROW 4b: Studio Sub-Projects (facilities/ops tasks — distinct from the
-       production-project tracker above) -->
+       production-project tracker above). Slack List URL provided by Adam
+       2026-08-14 — hardcoded here rather than via a BUILD marker since it's
+       one fixed link for the whole card, not a per-row generated value like
+       PROJECT_SLACK_LINKS above. "(Unassigned)" bucket (27 blank-Sub-Project
+       tasks, all completed) excluded from this card as of 2026-08-14 per
+       Adam — see build_subprojects_summary() docstring for why it was
+       dropped rather than folded into another category. -->
   <div class="dash-card" style="margin-bottom:20px;">
     <div class="dash-card-header">
       <div class="dash-card-title">
         Studio Sub-Projects
         <span class="source-pill source-slack">Slack</span>
+        <a href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AJ74QJ5RN" target="_blank" rel="noopener" class="proj-more-link" style="margin:0 0 0 4px; display:inline;">Open in Slack ↗</a>
       </div>
       <span class="dash-card-meta"><!-- BUILD:SUBPROJECTS_META -->
-111 tasks across 11 sub-projects
+84 tasks across 10 sub-projects
 <!-- /BUILD:SUBPROJECTS_META --></span>
     </div>
     <div class="proj-summary">
 <!-- BUILD:SUBPROJECTS_SUMMARY -->
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <span class="proj-name">(Unassigned)</span>
-            <span class="proj-frac">27 / 27 done · 100%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-          <div class="proj-phase-row"><span class="proj-phase-pill">Done</span><span class="proj-phase-pill">In progress</span><span class="proj-phase-pill">In progress, To Discuss</span><span class="proj-phase-pill">New</span><span class="proj-phase-pill">New, In progress</span><span class="proj-phase-pill">To Discuss</span></div>
-        </div>
         <div class="proj-row">
           <div class="proj-row-head">
             <span class="proj-name">Client Experience</span>
@@ -619,7 +628,7 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
   <!-- Equipment Orders (snapshot of the "FY 2026 July" tab from the
        "Production Studio Budget" Google Sheet, pulled 2026-08-06 — not
        live-synced, re-run the pull manually if the sheet changes) -->
-  <div class="dash-card" style="margin-bottom:0;">
+  <div class="dash-card" style="margin-bottom:20px;">
     <div class="dash-card-header">
       <div class="dash-card-title">Equipment Orders — FY 2026 July</div>
       <span class="dash-card-meta"><!-- BUILD:EQUIPMENT_META -->
@@ -751,8 +760,29 @@ Next 3 event(s) · synced Aug 14, 2026 10:16 AM
     </div>
   </div>
 
+  <!-- Real-data confirmation banner — redesigned + moved here 2026-08-14
+       (Adam: the old version at the very top of the page "looked kind of
+       weird"). Was one long run-on sentence naming every card, every CSV
+       filename, and its refresh mechanism, above ANY real content. Replaced
+       with a compact one-line strip (icon + headline + source pills) that
+       just confirms nothing here is placeholder data, and moved down to sit
+       directly above "Connect Live Data Sources" — which already has the
+       detailed per-source breakdown this banner used to try to cram in
+       itself, so the two now read as a natural summary → detail pair
+       instead of two things saying the same thing twice. -->
+  <div class="data-notice data-notice-compact" style="margin-bottom:20px;">
+    <span>✅ <strong>All data on this page is real</strong> — nothing here is sample or placeholder.</span>
+    <span class="data-notice-pills">
+      <span class="source-pill source-podio">Podio</span>
+      <span class="source-pill source-slack">Slack</span>
+      <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
+      <span class="source-pill source-local">Registry</span>
+    </span>
+    <a href="#data-sources" class="data-notice-link">Details below ↓</a>
+  </div>
+
   <!-- CONNECT YOUR DATA SECTION -->
-  <div class="dash-card" style="margin-bottom:0;">
+  <div class="dash-card" id="data-sources" style="margin-bottom:0;">
     <div class="dash-card-header">
       <div class="dash-card-title">Connect Live Data Sources</div>
       <span class="dash-card-meta">Slack: done · Podio: done · Outlook: done</span>
