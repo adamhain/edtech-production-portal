@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slack Workflow — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="project-progress.html" class="nav-tab">Project Progress</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="ingest.html" class="nav-tab">Ingest</a>
+      <a href="backups.html" class="nav-tab">Backups</a>
+      <a href="production-roles.html" class="nav-tab">Production Lead Roles</a>
+      <a href="slack-workflow.html" class="nav-tab active">Slack Workflow</a>
+      <a href="sidus-installation.html" class="nav-tab">Sidus Installation</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="badge">Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Production Tracking</p>
+      <h1>Slack workflow <em>overview.</em></h1>
+      <p class="hero-desc">How we track production work in Slack — two different setups for two different jobs: a per-project production tracker for individual shoots, and a studio-wide tracker for sub-projects and virtual production. Straight from Adam's own walkthrough, below.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <!-- SOURCE VIDEO — Google Drive embed via /preview iframe. Requires the
+       Drive file's sharing setting to allow "Anyone with the link" (or at
+       minimum Stanford-domain) to view; not independently verified from
+       this environment — if the embed shows a Google "request access"
+       screen instead of the player for anyone besides Adam, check sharing
+       settings on the Drive file. Fallback link to the Drive page itself
+       is included below the player either way. -->
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Watch the Walkthrough</div>
+      <span class="dash-card-meta">~7.5 min · Screen-recorded by Adam Hain</span>
+    </div>
+    <div class="video-card" style="max-width: 720px; margin: 0 auto; background: none; padding: 0;">
+      <div class="video-embed">
+        <iframe src="https://drive.google.com/file/d/1dK4XNqGljLijESQeDE8dYLFbv8rc0eAF/preview" title="Slack Workflow Overview" allow="autoplay"></iframe>
+      </div>
+      <div class="video-title">Slack Workflow Overview</div>
+      <div class="video-meta">If the player above doesn't load, <a href="https://drive.google.com/file/d/1dK4XNqGljLijESQeDE8dYLFbv8rc0eAF/view?usp=drive_link" target="_blank" rel="noopener">open it directly in Google Drive instead ↗</a> — this usually means the file's sharing setting needs to be switched to "Anyone with the link."</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>Two Ways We Track Work in Slack</h2>
+    <span>Pick the one that matches what you're tracking</span>
+  </div>
+
+  <div class="dashboard-grid" style="margin-bottom: 24px;">
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">🎬 Per-Project Production Trackers</div>
+      </div>
+      <p style="font-size:13px; color:var(--ink-mid); line-height:1.7; margin:0 0 12px;">One Slack List per shoot/project (e.g. a podcast episode, Studio Promo). Intended to be <strong>linear</strong> — it follows a production through its workflow phases from start to finish. Feeds the master data pipeline that Irina and Tableau reporting pull from.</p>
+      <a href="#per-project" style="font-size:12px; font-weight:600; color:var(--accent); text-decoration:none;">Jump to details ↓</a>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">🧩 Studio Sub-Project Tracker</div>
+      </div>
+      <p style="font-size:13px; color:var(--ink-mid); line-height:1.7; margin:0 0 12px;">One list, in the studio channel, for studio-wide sub-projects and virtual production work. <strong>Not linear</strong> — items aren't in any specific order, just a running list of studio-ops things that need doing, grouped by a custom "subproject" field.</p>
+      <a href="#sub-project" style="font-size:12px; font-weight:600; color:var(--accent); text-decoration:none;">Jump to details ↓</a>
+    </div>
+  </div>
+
+  <div class="dash-card" id="per-project" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Per-Project Production Trackers (Slack Lists)</div>
+    </div>
+    <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0 0 14px;">Every trackable list in this system is a <strong>Slack List</strong>. Adam or the Production Lead builds one out for every shoot/project — for series with a lot of episodes (e.g. the Learning Lab podcast), there's a "list of lists" so each episode gets its own tracker without one giant list getting unwieldy.</p>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">1. Grouping — flexible, changeable anytime</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">By default, items are grouped by <strong>production/workflow phase</strong>. You can instead group by <strong>global phase</strong> (pre-production vs. post), by <strong>due date</strong>, or by assignee — whatever view is most useful in the moment. As the trackers get more granular over time, items will also carry real assignees rather than just being checked off in bulk once a phase is known to be done.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">2. View a specific project as a channel tab</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">If you're working on one project — say Studio Promo — its tracker typically gets pinned as a tab right in that project's channel, so you can see at a glance how much has been completed. (For series with a lot of episodes/lists, this doesn't always fit as individual tabs — see the "list of lists" pattern above.)</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">3. Feeds the master data pipeline (Irina / Tableau)</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Each tracker is connected via a Slack workflow that sends its data to a second list, structured with a bunch of extra variables. <strong>That second list is what gets sent to Irina for processing and into Tableau for reporting</strong> — it captures information that can't be pulled from the downloaded tracker CSVs alone. In other words: the per-project tracker isn't just a to-do list, it's also the source data for studio-wide reporting, which is exactly why it's set up the way it is.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-card" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Finding What's Assigned to You</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">Slack → Lists</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Open the Lists section in Slack to see every list you have access to. Because Adam or the Production Lead builds so many of these, that view can get long — narrow it with <strong>Shared with You</strong> (lists someone else created and gave you access to) or the lists you created yourself.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">Assigned to You — the useful one</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">This view pulls together everything assigned to you <strong>across every list</strong>, regardless of which project it belongs to — no need to check each tracker individually. Works the same way in the <strong>Slack mobile app</strong>, so you can check what's on your plate without opening a laptop.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">Found something stale?</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">If you spot an item in your assigned view that's out of date — wrong due date, already done, etc. — either update it yourself or flag it to Adam. This is a known rough edge as these trackers get used more heavily.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-card" id="sub-project" style="margin-bottom: 24px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Studio Sub-Project &amp; Virtual Production Tracker</div>
+    </div>
+    <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0 0 14px;">This is a separate list, living in the studio channel, for studio sub-projects and virtual production work — things that aren't tied to one specific shoot. Unlike the per-project trackers above, items here <strong>aren't in any particular order</strong>; the production workflow tracker is meant to be linear, this one isn't.</p>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">1. Tracked at the item level</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">Click on any item to open its detail card — fields, notes, everything about that one item live there. It's easier to work with these items in <strong>Board (Block) view</strong> rather than the default list view.</p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">2. A custom "subproject" field powers the grouping</div>
+        <p style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin:0;">The fields on each item connect back to that same master list/pipeline described above, pulling data from it. Grouping-by-category (like "filter by project" here, or "filter by workflow name" on the per-project trackers) is created with a <strong>selection field</strong> — a categorical/distinct-value field. In this tracker, that field is called <code>subproject</code>, pre-loaded with the current studio sub-projects. You can add new subprojects to the list, delete ones that no longer apply, or even create entirely new custom fields to group by however makes sense for you.</p>
+      </div>
+    </div>
+
+    <div class="mock-notice" style="margin-top:16px; margin-bottom:0;">
+      ⚠️ <strong>Don't delete the existing fields</strong> on sub-project tracker items (even if you're not using one). They're wired to the master spreadsheet the rest of the reporting pipeline depends on — deleting a field breaks that connection, not just the view.
+    </div>
+  </div>
+
+  <div class="data-notice" style="margin-top:24px;">
+    🎥 Source: Adam Hain's screen-recorded walkthrough ("Slack Workflow Overview.mov", ~7.5 min), transcribed via WhisperX and organized into this page. As Adam put it — "as always, open to feedback." Eventually the goal is for the Production Lead to be able to build these per-project trackers directly, rather than Adam setting up every one.
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
