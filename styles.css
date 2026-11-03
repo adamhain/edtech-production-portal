@@ -313,7 +313,7 @@ header {
 
 /* PROJECT PROGRESS PAGE (project-progress.html) — additive; reuses
    .dash-card / .proj-bar-track / .proj-bar-fill / .proj-name from above */
-.rollup-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.rollup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
 .rollup-stat { background: var(--surface); border-radius: var(--radius); padding: 16px 14px; text-align: center; }
 .rollup-num { font-size: 1.6rem; font-weight: 700; color: var(--ink); line-height: 1.1; }
 .rollup-num.accent { color: var(--cardinal); }
@@ -378,3 +378,29 @@ footer strong { color: var(--cardinal); }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .nav-tabs { display: none; }
 }
+
+/* PROJECT STATUS from shoot trackers (2026-11-03) */
+.source-sheets { background: var(--green-light); color: var(--green); }
+.proj-id { font-size: 10px; font-weight: 500; color: var(--ink-soft); margin-left: 8px; letter-spacing: 0.02em; }
+.proj-row-sub { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 5px; font-size: 11px; color: var(--ink-mid); }
+.pp-row .proj-row-sub { margin-top: 6px; }
+.proj-next { color: var(--ink-mid); }
+.proj-src-tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: var(--surface-2); color: var(--ink-soft); }
+.proj-src-slack { background: var(--slack-light); color: var(--slack); }
+.pp-chip-overdue { background: var(--cardinal-dim); color: var(--cardinal); }
+.stale-notice { background: var(--cardinal-dim); border-left: 3px solid var(--cardinal); border-radius: 6px; padding: 10px 14px; font-size: 12px; color: var(--ink); line-height: 1.55; margin-bottom: 14px; }
+.stale-notice strong { color: var(--cardinal); }
+
+/* PROJECT TRACKERS how-to page (project-trackers.html, 2026-11-03) */
+.howto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.howto-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
+.howto-steps li { counter-increment: step; position: relative; padding-left: 38px; font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+.howto-steps li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%; background: var(--cardinal-dim); color: var(--cardinal); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.howto-steps li strong, .howto-list li strong { color: var(--ink); }
+.howto-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.howto-list li { font-size: 14px; color: var(--ink-mid); line-height: 1.6; padding-left: 16px; position: relative; }
+.howto-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+.howto-list.dont li::before { background: var(--cardinal); }
+.howto-kbd { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 6px; background: var(--surface-2); color: var(--ink); white-space: nowrap; }
+.howto-callout { background: var(--surface); border-radius: var(--radius); padding: 16px 18px; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+@media (max-width: 900px) { .howto-grid { grid-template-columns: 1fr; } }
