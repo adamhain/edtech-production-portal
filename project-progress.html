@@ -46,6 +46,7 @@
     <nav class="nav-tabs">
       <a href="index.html" class="nav-tab">Dashboard</a>
       <a href="project-progress.html" class="nav-tab active">Project Progress</a>
+      <a href="project-trackers.html" class="nav-tab">Project Trackers</a>
       <a href="training.html" class="nav-tab">Training &amp; Roles</a>
       <a href="ingest.html" class="nav-tab">Ingest</a>
       <a href="backups.html" class="nav-tab">Backups</a>
@@ -56,8 +57,8 @@
       <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
     </nav>
     <div class="header-right">
-      <span class="live-dot">Slack + Podio + Outlook live</span>
-      <span class="badge">Aug 2026</span>
+      <span class="live-dot">Trackers + Podio + Outlook live</span>
+      <span class="badge">Nov 2026</span>
     </div>
   </div>
 </header>
@@ -67,7 +68,7 @@
     <div>
       <p class="hero-eyebrow">Project Tracking</p>
       <h1>Project <em>progress.</em></h1>
-      <p class="hero-desc">Every production tracker in one place, grouped by where it actually stands — in progress, not started, or complete — with task counts behind each number. The Dashboard's Project Status card is the at-a-glance version of this; this page is the full breakdown.</p>
+      <p class="hero-desc">Every open project in one place, grouped by where it actually stands, with the next task and anything overdue. Numbers come from each project's shoot tracker. The Dashboard's Project Status card is the at-a-glance version of this page.</p>
     </div>
   </div>
 </section>
@@ -78,26 +79,28 @@
     <div class="dash-card-header">
       <div class="dash-card-title">
         Portfolio Rollup
-        <span class="source-pill source-slack">Slack</span>
+        <span class="source-pill source-sheets">Shoot trackers</span>
       </div>
       <span class="dash-card-meta"><!-- BUILD:PROGRESS_META -->
-27 projects · 371/808 tasks done · 46% overall · 27 linked, 0 not linked · Task data as of Oct 16, 2026 <strong style="color:#8C1515;">· STALE (17 days old)</strong>
+22 projects · 22 from shoot trackers · Tracker progress as of Nov 3, 12:05 PM
 <!-- /BUILD:PROGRESS_META --></span>
     </div>
 <!-- BUILD:PROGRESS_ROLLUP -->
+
         <div class="rollup-grid">
-          <div class="rollup-stat"><div class="rollup-num">27</div><div class="rollup-label">Projects tracked</div></div>
-          <div class="rollup-stat"><div class="rollup-num">808</div><div class="rollup-label">Total tasks</div></div>
-          <div class="rollup-stat"><div class="rollup-num">371</div><div class="rollup-label">Completed</div></div>
-          <div class="rollup-stat"><div class="rollup-num">437</div><div class="rollup-label">Open</div></div>
-          <div class="rollup-stat"><div class="rollup-num accent">46%</div><div class="rollup-label">Overall complete</div></div>
+          <div class="rollup-stat"><div class="rollup-num">22</div><div class="rollup-label">Open projects</div></div>
+          <div class="rollup-stat"><div class="rollup-num">751</div><div class="rollup-label">Total tasks</div></div>
+          <div class="rollup-stat"><div class="rollup-num">101</div><div class="rollup-label">Completed</div></div>
+          <div class="rollup-stat"><div class="rollup-num">650</div><div class="rollup-label">Open</div></div>
+          <div class="rollup-stat"><div class="rollup-num">172</div><div class="rollup-label">Overdue tasks</div></div>
+          <div class="rollup-stat"><div class="rollup-num accent">13%</div><div class="rollup-label">Overall complete</div></div>
         </div>
 <!-- /BUILD:PROGRESS_ROLLUP -->
   </div>
 
   <div class="section-header">
     <h2>By Status</h2>
-    <span>Projects with a Slack List link open the tracker itself</span>
+    <span>Your project's tracker link is pinned in its Slack channel · <a href="project-trackers.html" style="color:var(--cardinal);">how to use it</a></span>
   </div>
 
 <!-- BUILD:PROGRESS_GROUPS -->
@@ -105,164 +108,100 @@
           <div class="dash-card-header">
             <div class="dash-card-title">
               In Progress
-              <span class="pp-count pp-count-active">14</span>
+              <span class="pp-count pp-count-active">10</span>
             </div>
-            <span class="dash-card-meta">Started but not finished — these are the ones with live work on them.</span>
+            <span class="dash-card-meta">Started but not finished. Most overdue first, then by next due date.</span>
           </div>
           <div class="pp-list">
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AK6AYAG8H" target="_blank" rel="noopener">Video 1 Clerkship Assessment <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">31 / 33 done · 94%</span>
+                <span class="proj-name">Neo Narratives Ep2<span class="proj-id">SMS-2026-045</span></span>
+                <span class="proj-frac">1 / 42 done · 2%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:94%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">31 completed</span>
-                <span class="pp-chip pp-chip-open">2 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">1 completed</span> <span class="pp-chip pp-chip-open">41 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Script Reviewed · due Aug 14</span> <span class="pp-chip pp-chip-overdue">17 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AV62F763Z" target="_blank" rel="noopener">IDD Production Workflow <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">35 / 39 done · 90%</span>
+                <span class="proj-name">Neo Narratives Ep3<span class="proj-id">SMS-2026-046</span></span>
+                <span class="proj-frac">1 / 42 done · 2%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:90%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">35 completed</span>
-                <span class="pp-chip pp-chip-open">4 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">1 completed</span> <span class="pp-chip pp-chip-open">41 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Script Reviewed · due Aug 14</span> <span class="pp-chip pp-chip-overdue">17 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHFLAA8UT" target="_blank" rel="noopener">TGD Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">23 / 27 done · 85%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:85%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">23 completed</span>
-                <span class="pp-chip pp-chip-open">4 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0ARK9LMX0R" target="_blank" rel="noopener">Elevate Production Workflow <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">23 / 39 done · 59%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">23 completed</span>
-                <span class="pp-chip pp-chip-open">16 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMTDSG4S" target="_blank" rel="noopener">RMK Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">15 / 28 done · 54%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:54%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">15 completed</span>
-                <span class="pp-chip pp-chip-open">13 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AKGEWMKLG" target="_blank" rel="noopener">Studio Promotional Video <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">16 / 30 done · 53%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:53%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">16 completed</span>
-                <span class="pp-chip pp-chip-open">14 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AJ0T1R43Y" target="_blank" rel="noopener">Path Cap Production <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">13 / 33 done · 39%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:39%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">13 completed</span>
-                <span class="pp-chip pp-chip-open">20 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BSY7TMATY" target="_blank" rel="noopener">Loaded Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">5 / 14 done · 36%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:36%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">5 completed</span>
-                <span class="pp-chip pp-chip-open">9 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BU0MFLUE4" target="_blank" rel="noopener">Psychosis Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">2 / 14 done · 14%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:14%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">2 completed</span>
-                <span class="pp-chip pp-chip-open">12 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQT2NR90W" target="_blank" rel="noopener">Zoe Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">2 / 15 done · 13%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:13%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">2 completed</span>
-                <span class="pp-chip pp-chip-open">13 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHKRUPYK0" target="_blank" rel="noopener">Teggin Summers Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">3 / 28 done · 11%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:11%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">3 completed</span>
-                <span class="pp-chip pp-chip-open">25 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQQNNMJ8G" target="_blank" rel="noopener">Neo Narratives Ep1 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-name">Neo Narratives Ep1<span class="proj-id">SMS-2026-044</span></span>
                 <span class="proj-frac">2 / 42 done · 5%</span>
               </div>
               <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:5%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">2 completed</span>
-                <span class="pp-chip pp-chip-open">40 open</span>
-              </div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">2 completed</span> <span class="pp-chip pp-chip-open">40 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BPWBTFZGS" target="_blank" rel="noopener">Neo Narratives Ep2 <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">1 / 42 done · 2%</span>
+                <span class="proj-name">Elevate Production Workflow<span class="proj-id">SMS-2026-020</span></span>
+                <span class="proj-frac">23 / 39 done · 59%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">1 completed</span>
-                <span class="pp-chip pp-chip-open">41 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">23 completed</span> <span class="pp-chip pp-chip-open">16 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Motion GFX/Titles Integrated and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">12 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQ03TR95J" target="_blank" rel="noopener">Neo Narratives Ep3 <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">1 / 42 done · 2%</span>
+                <span class="proj-name">Zoe Podcast<span class="proj-id">SMS-2026-025</span></span>
+                <span class="proj-frac">2 / 15 done · 13%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">1 completed</span>
-                <span class="pp-chip pp-chip-open">41 open</span>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:13%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">2 completed</span> <span class="pp-chip pp-chip-open">13 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Shoot Scheduled with Production Team · due Sep 15</span> <span class="pp-chip pp-chip-overdue">10 overdue</span></div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Loaded Podcast<span class="proj-id">SMS-2026-051</span></span>
+                <span class="proj-frac">5 / 14 done · 36%</span>
               </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:36%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">5 completed</span> <span class="pp-chip pp-chip-open">9 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Studio Supplies and Safety Check · due Aug 28</span> <span class="pp-chip pp-chip-overdue">9 overdue</span></div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Psychosis Podcast<span class="proj-id">SMS-2026-050</span></span>
+                <span class="proj-frac">2 / 14 done · 14%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:14%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">2 completed</span> <span class="pp-chip pp-chip-open">12 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Production Test Complete · due Aug 28</span> <span class="pp-chip pp-chip-overdue">9 overdue</span></div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Path Cap Production<span class="proj-id">SMS-2026-009</span></span>
+                <span class="proj-frac">13 / 33 done · 39%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:39%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">13 completed</span> <span class="pp-chip pp-chip-open">20 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Script Drafted · due Mar 6</span> <span class="pp-chip pp-chip-overdue">3 overdue</span> <span class="proj-src-tag">Stalled</span></div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">Studio Promotional Video<span class="proj-id">SMS-2026-010</span></span>
+                <span class="proj-frac">17 / 30 done · 57%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:57%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">17 completed</span> <span class="pp-chip pp-chip-open">13 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Preliminary Motion GFX/Titles Integrated · due Nov 30</span></div>
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">IDD Production Workflow<span class="proj-id">SMS-2026-023</span></span>
+                <span class="proj-frac">35 / 39 done · 90%</span>
+              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:90%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">35 completed</span> <span class="pp-chip pp-chip-open">4 open</span></div>
+              
             </div>
           </div>
         </div>
@@ -270,164 +209,118 @@
           <div class="dash-card-header">
             <div class="dash-card-title">
               Not Started
-              <span class="pp-count pp-count-notstarted">5</span>
+              <span class="pp-count pp-count-notstarted">12</span>
             </div>
-            <span class="dash-card-meta">Tracker set up and tasks scoped, but nothing checked off yet.</span>
+            <span class="dash-card-meta">Tracker set up, nothing ticked off yet.</span>
           </div>
           <div class="pp-list">
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQ8VDBV0W" target="_blank" rel="noopener">EM Podcast EP 4 <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">0 / 15 done · 0%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">0 completed</span>
-                <span class="pp-chip pp-chip-open">15 open</span>
-              </div>
-            </div>
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0C08DHPLQ3" target="_blank" rel="noopener">OMDA OCHE Video <span class="proj-link-icon">↗</span></a>
+                <span class="proj-name">UDN Video 1<span class="proj-id">SMS-2026-041</span></span>
                 <span class="proj-frac">0 / 42 done · 0%</span>
               </div>
               <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">0 completed</span>
-                <span class="pp-chip pp-chip-open">42 open</span>
-              </div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">42 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Script Drafted · due Aug 14</span> <span class="pp-chip pp-chip-overdue">18 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNLQS7VTM" target="_blank" rel="noopener">UDN Video 1 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-name">Innovation Lecture<span class="proj-id">SMS-2026-076</span></span>
                 <span class="proj-frac">0 / 42 done · 0%</span>
               </div>
               <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">0 completed</span>
-                <span class="pp-chip pp-chip-open">42 open</span>
-              </div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">42 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span> <span class="proj-src-tag">Upcoming</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNV3HKQU9" target="_blank" rel="noopener">UDN Video 2 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-name">OMDA OCHE Video<span class="proj-id">SMS-2026-054</span></span>
                 <span class="proj-frac">0 / 42 done · 0%</span>
               </div>
               <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">0 completed</span>
-                <span class="pp-chip pp-chip-open">42 open</span>
-              </div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">42 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNT5LK8PL" target="_blank" rel="noopener">UDN Video 3 <span class="proj-link-icon">↗</span></a>
+                <span class="proj-name">UDN Video 2<span class="proj-id">SMS-2026-042</span></span>
                 <span class="proj-frac">0 / 42 done · 0%</span>
               </div>
               <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">0 completed</span>
-                <span class="pp-chip pp-chip-open">42 open</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="dash-card" style="margin-bottom:20px;">
-          <div class="dash-card-header">
-            <div class="dash-card-title">
-              Complete
-              <span class="pp-count pp-count-done">8</span>
-            </div>
-            <span class="dash-card-meta">Every task in the tracker is checked off.</span>
-          </div>
-          <div class="pp-list">
-            <div class="pp-row">
-              <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQXSDL2E8" target="_blank" rel="noopener">Aggarwal Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">33 / 33 done · 100%</span>
-              </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">33 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">42 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMT9Q1K4" target="_blank" rel="noopener">Bladder Basics Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">28 / 28 done · 100%</span>
+                <span class="proj-name">UDN Video 3<span class="proj-id">SMS-2026-043</span></span>
+                <span class="proj-frac">0 / 42 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">28 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">42 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0B07L23HRQ" target="_blank" rel="noopener">CME Promotion <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">37 / 37 done · 100%</span>
+                <span class="proj-name">Health Policy Forum: In Conversation (Podcast)<span class="proj-id">SMS-2026-094</span></span>
+                <span class="proj-frac">0 / 28 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">37 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">28 open</span></div>
+              <div class="proj-row-sub"><span class="proj-next">Next: Shoot Scheduled with Client · due Oct 30</span> <span class="pp-chip pp-chip-overdue">2 overdue</span> <span class="proj-src-tag">Upcoming</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AJ250FYF8" target="_blank" rel="noopener">EM Podcast EP 1 <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">15 / 15 done · 100%</span>
+                <span class="proj-name">CCT Course 2 Flipped-Classroom Video Series<span class="proj-id">SMS-2026-052</span></span>
+                <span class="proj-frac">0 / 35 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">15 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">35 open</span></div>
+              
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQCSHKA0H" target="_blank" rel="noopener">EM Podcast EP 2 <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">15 / 15 done · 100%</span>
+                <span class="proj-name">LEAP Course Redesign<span class="proj-id">SMS-2026-056</span></span>
+                <span class="proj-frac">0 / 35 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">15 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">35 open</span></div>
+              
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BR597S0P2" target="_blank" rel="noopener">EM Podcast EP 3 <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">15 / 15 done · 100%</span>
+                <span class="proj-name">Microlearning Videos: Transitions to Clerkships<span class="proj-id">SMS-2026-005</span></span>
+                <span class="proj-frac">0 / 35 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">15 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">35 open</span></div>
+              <div class="proj-row-sub"><span class="proj-src-tag">Upcoming</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQCQNFU1M" target="_blank" rel="noopener">Gardner Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">28 / 28 done · 100%</span>
+                <span class="proj-name">OMSW Overview<span class="proj-id">SMS-2026-013</span></span>
+                <span class="proj-frac">0 / 35 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">28 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
-              </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">35 open</span></div>
+              <div class="proj-row-sub"><span class="proj-src-tag">On Hold</span></div>
             </div>
             <div class="pp-row">
               <div class="pp-row-head">
-                <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHPQRDTC1" target="_blank" rel="noopener">Thinking Habits Podcast <span class="proj-link-icon">↗</span></a>
-                <span class="proj-frac">28 / 28 done · 100%</span>
+                <span class="proj-name">Pitt Bioethics Podcast Series<span class="proj-id">SMS-2026-053</span></span>
+                <span class="proj-frac">0 / 28 done · 0%</span>
               </div>
-              <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
-              <div class="pp-row-meta">
-                <span class="pp-chip pp-chip-done">28 completed</span>
-                <span class="pp-chip pp-chip-open">0 open</span>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">28 open</span></div>
+              
+            </div>
+            <div class="pp-row">
+              <div class="pp-row-head">
+                <span class="proj-name">ROVER Animation<span class="proj-id">SMS-2026-019</span></span>
+                <span class="proj-frac">0 / 35 done · 0%</span>
               </div>
+              <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+              <div class="pp-row-meta"><span class="pp-chip pp-chip-done">0 completed</span> <span class="pp-chip pp-chip-open">35 open</span></div>
+              <div class="proj-row-sub"><span class="proj-src-tag">On Hold</span></div>
             </div>
           </div>
         </div>
@@ -438,11 +331,12 @@
       <div class="dash-card-title">About This Data</div>
     </div>
     <ul style="font-size:12px; color:var(--ink-mid); line-height:1.7; margin:0; padding-left:18px;">
-      <li><strong>Source:</strong> the <em>Summary</em> tab of the "Production_Task_Trackers_Master" Google Sheet, which aggregates every per-task tracker into one row per project.</li>
-      <li><strong>Not live-synced.</strong> It's a manual point-in-time snapshot (same as Equipment Orders and Production Archive Status) — re-pulled by re-running the build after the Sheet changes, not on page load.</li>
-      <li><strong>Percentages are recomputed</strong> from the completed/total task counts rather than read from the Sheet, so a stale percentage cell can't disagree with the counts shown here.</li>
-      <li><strong>"not linked"</strong> means no Slack List URL is on file for that tracker yet — the progress numbers are still real. Ask Adam to add the link and it becomes clickable on the next build.</li>
-      <li><strong>Task-level detail</strong> (assignee, due date, workflow phase) lives in each project's Slack List, not here — this page deliberately stops at per-project counts.</li>
+      <li><strong>Source:</strong> each project's Google Sheet shoot tracker. The Studio Master Production Tracker reads all of them twice a day on weekdays (about 9:30 and 2:30), and this page shows that reading. The "as of" time is at the top.</li>
+      <li><strong>The project list</strong> (names, SMS IDs, Active / On Hold / Stalled) comes from the Studio Master Production Tracker.</li>
+      <li><strong>"Last Slack numbers"</strong> means the project has no shoot tracker yet, so it shows the final count from its old Slack List. Slack Lists were retired on Nov 3, 2026.</li>
+      <li><strong>Overdue</strong> counts unticked tasks whose Due / End date has passed. If a date is wrong, fix it in the tracker and it updates on the next reading.</li>
+      <li><strong>A red notice</strong> at the top means the tracker reading is late or missing, so the numbers may be behind. The trackers themselves are always current.</li>
+      <li><strong>Task-level detail</strong> (owners, dates, notes) lives in each tracker, not here. <a href="project-trackers.html" style="color:var(--cardinal);">How to use your tracker →</a></li>
     </ul>
   </div>
 
