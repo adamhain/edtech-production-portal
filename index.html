@@ -46,6 +46,7 @@
     <nav class="nav-tabs">
       <a href="index.html" class="nav-tab active">Dashboard</a>
       <a href="project-progress.html" class="nav-tab">Project Progress</a>
+      <a href="project-trackers.html" class="nav-tab">Project Trackers</a>
       <a href="training.html" class="nav-tab">Training &amp; Roles</a>
       <a href="ingest.html" class="nav-tab">Ingest</a>
       <a href="backups.html" class="nav-tab">Backups</a>
@@ -57,9 +58,9 @@
 
     </nav>
     <div class="header-right">
-      <span class="live-dot">Slack + Podio + Outlook live</span>
+      <span class="live-dot">Trackers + Podio + Outlook live</span>
       <span class="badge"><!-- BUILD:LAST_UPDATED -->
-Nov 2, 2026
+Nov 3, 2026
 <!-- /BUILD:LAST_UPDATED --></span>
     </div>
   </div>
@@ -86,7 +87,7 @@ Nov 2, 2026
           <span class="source-pill source-podio">Podio</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:PODIO_PIPELINE_META -->
-31 active · synced Nov 2, 2026 7:20 AM
+31 active · synced Nov 3, 2026 12:10 PM
 <!-- /BUILD:PODIO_PIPELINE_META --></span>
       </div>
       <div class="production-list">
@@ -160,7 +161,7 @@ Nov 2, 2026
           <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
         </div>
         <span class="dash-card-meta"><!-- BUILD:CALENDAR_META -->
-Next 6 event(s) · synced Nov 2, 2026 7:20 AM
+Next 6 event(s) · synced Nov 3, 2026 12:10 PM
 <!-- /BUILD:CALENDAR_META --></span>
       </div>
       <div class="studio-cal">
@@ -168,50 +169,50 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
         <div class="cal-item">
           <div class="cal-bar full"></div>
           <div class="cal-info">
-            <div class="cal-date">Monday, Nov 2</div>
-            <div class="cal-desc">Please Hold: Testing for KQED w/Zoom</div>
+            <div class="cal-date">Wednesday, Nov 4</div>
+            <div class="cal-desc">Setup for EM Podcast</div>
           </div>
-          <div class="cal-time">10:00am – 11:30am</div>
-        </div>
-        <div class="cal-item">
-          <div class="cal-bar full"></div>
-          <div class="cal-info">
-            <div class="cal-date">Tuesday, Nov 3</div>
-            <div class="cal-desc">Crew Setup for IT Career Pathways Recording</div>
-          </div>
-          <div class="cal-time">9:30am – 10:30am</div>
-        </div>
-        <div class="cal-item">
-          <div class="cal-bar full"></div>
-          <div class="cal-info">
-            <div class="cal-date">Tuesday, Nov 3</div>
-            <div class="cal-desc">Please Hold: KQED Morning Show (live)</div>
-          </div>
-          <div class="cal-time">10:00am – 11:00am</div>
-        </div>
-        <div class="cal-item">
-          <div class="cal-bar full"></div>
-          <div class="cal-info">
-            <div class="cal-date">Tuesday, Nov 3</div>
-            <div class="cal-desc">IT Career Pathways Podcast Intro Recording w/ Pauline</div>
-          </div>
-          <div class="cal-time">10:30am – 11:00am</div>
-        </div>
-        <div class="cal-item">
-          <div class="cal-bar full"></div>
-          <div class="cal-info">
-            <div class="cal-date">Tuesday, Nov 3</div>
-            <div class="cal-desc">IT Career Pathways Podcast</div>
-          </div>
-          <div class="cal-time">11:00am – 12:00pm</div>
+          <div class="cal-time">2:00pm – 3:00pm</div>
         </div>
         <div class="cal-item">
           <div class="cal-bar full"></div>
           <div class="cal-info">
             <div class="cal-date">Wednesday, Nov 4</div>
-            <div class="cal-desc">Setup for EM Podcast</div>
+            <div class="cal-desc">Emergency Medicine Recording</div>
           </div>
-          <div class="cal-time">2:00pm – 3:00pm</div>
+          <div class="cal-time">3:00pm – 4:00pm</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-bar full"></div>
+          <div class="cal-info">
+            <div class="cal-date">Wednesday, Nov 11</div>
+            <div class="cal-desc">Pitt Podcast Hold</div>
+          </div>
+          <div class="cal-time">9:00am – 12:00pm</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-bar full"></div>
+          <div class="cal-info">
+            <div class="cal-date">Thursday, Nov 12</div>
+            <div class="cal-desc">Pitt Podcast Hold</div>
+          </div>
+          <div class="cal-time">9:00am – 12:00pm</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-bar full"></div>
+          <div class="cal-info">
+            <div class="cal-date">Friday, Nov 13</div>
+            <div class="cal-desc">Please Hold: Psychosis Podcast</div>
+          </div>
+          <div class="cal-time">9:30am – 11:30am</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-bar full"></div>
+          <div class="cal-info">
+            <div class="cal-date">Monday, Nov 16</div>
+            <div class="cal-desc">Pitt Podcast Hold</div>
+          </div>
+          <div class="cal-time">9:00am – 12:00pm</div>
         </div>
 <!-- /BUILD:CALENDAR -->
       </div>
@@ -257,8 +258,10 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
     </div>
   </div>
 
-  <!-- ROW 4: REAL data, from the Production_Task_Trackers_Master Sheet
-       snapshot (project_progress_master.csv). Full-width single card as of
+  <!-- ROW 4: Project Status. 2026-11-03: built from the Studio Master
+       Production Tracker feed (projects.csv) + the Google Sheet shoot
+       trackers (shoot_progress.csv); see studio_project_status.py. Slack
+       Lists retired 2026-11-03. Before that: project_progress_master.csv. Full-width single card as of
        2026-08-14 — the "Recently Completed" card that used to sit beside it
        in a 2-up dashboard-grid was removed per Adam, so the grid wrapper
        went with it rather than leaving a half-width orphan. -->
@@ -266,204 +269,191 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
     <div class="dash-card-header">
       <div class="dash-card-title">
         Project Status
-        <span class="source-pill source-slack">Slack</span>
+        <span class="source-pill source-sheets">Shoot trackers</span>
       </div>
       <span class="dash-card-meta"><!-- BUILD:PROGRESS_META -->
-27 projects · 371/808 tasks done · 46% overall · 27 linked, 0 not linked · Task data as of Oct 16, 2026 <strong style="color:#8C1515;">· STALE (17 days old)</strong>
+22 projects · 22 from shoot trackers · Tracker progress as of Nov 3, 12:05 PM
 <!-- /BUILD:PROGRESS_META --></span>
     </div>
     <div class="proj-summary">
 <!-- BUILD:PROJECT_SUMMARY -->
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AK6AYAG8H" target="_blank" rel="noopener">Video 1 Clerkship Assessment <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">31 / 33 done · 94%</span>
+            <span class="proj-name">Neo Narratives Ep2<span class="proj-id">SMS-2026-045</span></span>
+            <span class="proj-frac">1 / 42 done · 2%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:94%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Script Reviewed · due Aug 14</span> <span class="pp-chip pp-chip-overdue">17 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AV62F763Z" target="_blank" rel="noopener">IDD Production Workflow <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">35 / 39 done · 90%</span>
+            <span class="proj-name">Neo Narratives Ep3<span class="proj-id">SMS-2026-046</span></span>
+            <span class="proj-frac">1 / 42 done · 2%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:90%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Script Reviewed · due Aug 14</span> <span class="pp-chip pp-chip-overdue">17 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHFLAA8UT" target="_blank" rel="noopener">TGD Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">23 / 27 done · 85%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:85%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0ARK9LMX0R" target="_blank" rel="noopener">Elevate Production Workflow <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">23 / 39 done · 59%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMTDSG4S" target="_blank" rel="noopener">RMK Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">15 / 28 done · 54%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:54%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AKGEWMKLG" target="_blank" rel="noopener">Studio Promotional Video <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">16 / 30 done · 53%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:53%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AJ0T1R43Y" target="_blank" rel="noopener">Path Cap Production <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">13 / 33 done · 39%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:39%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BSY7TMATY" target="_blank" rel="noopener">Loaded Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">5 / 14 done · 36%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:36%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BU0MFLUE4" target="_blank" rel="noopener">Psychosis Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">2 / 14 done · 14%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:14%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQT2NR90W" target="_blank" rel="noopener">Zoe Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">2 / 15 done · 13%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:13%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHKRUPYK0" target="_blank" rel="noopener">Teggin Summers Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">3 / 28 done · 11%</span>
-          </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:11%"></div></div>
-        </div>
-        <div class="proj-row">
-          <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQQNNMJ8G" target="_blank" rel="noopener">Neo Narratives Ep1 <span class="proj-link-icon">↗</span></a>
+            <span class="proj-name">Neo Narratives Ep1<span class="proj-id">SMS-2026-044</span></span>
             <span class="proj-frac">2 / 42 done · 5%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:5%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BPWBTFZGS" target="_blank" rel="noopener">Neo Narratives Ep2 <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">1 / 42 done · 2%</span>
+            <span class="proj-name">Elevate Production Workflow<span class="proj-id">SMS-2026-020</span></span>
+            <span class="proj-frac">23 / 39 done · 59%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:59%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Motion GFX/Titles Integrated and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">12 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQ03TR95J" target="_blank" rel="noopener">Neo Narratives Ep3 <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">1 / 42 done · 2%</span>
+            <span class="proj-name">Zoe Podcast<span class="proj-id">SMS-2026-025</span></span>
+            <span class="proj-frac">2 / 15 done · 13%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:2%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:13%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Shoot Scheduled with Production Team · due Sep 15</span> <span class="pp-chip pp-chip-overdue">10 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQ8VDBV0W" target="_blank" rel="noopener">EM Podcast EP 4 <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">0 / 15 done · 0%</span>
+            <span class="proj-name">Loaded Podcast<span class="proj-id">SMS-2026-051</span></span>
+            <span class="proj-frac">5 / 14 done · 36%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:36%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Studio Supplies and Safety Check · due Aug 28</span> <span class="pp-chip pp-chip-overdue">9 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0C08DHPLQ3" target="_blank" rel="noopener">OMDA OCHE Video <span class="proj-link-icon">↗</span></a>
+            <span class="proj-name">Psychosis Podcast<span class="proj-id">SMS-2026-050</span></span>
+            <span class="proj-frac">2 / 14 done · 14%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:14%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Production Test Complete · due Aug 28</span> <span class="pp-chip pp-chip-overdue">9 overdue</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Path Cap Production<span class="proj-id">SMS-2026-009</span></span>
+            <span class="proj-frac">13 / 33 done · 39%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:39%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Script Drafted · due Mar 6</span> <span class="pp-chip pp-chip-overdue">3 overdue</span> <span class="proj-src-tag">Stalled</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">Studio Promotional Video<span class="proj-id">SMS-2026-010</span></span>
+            <span class="proj-frac">17 / 30 done · 57%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:57%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Preliminary Motion GFX/Titles Integrated · due Nov 30</span></div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">IDD Production Workflow<span class="proj-id">SMS-2026-023</span></span>
+            <span class="proj-frac">35 / 39 done · 90%</span>
+          </div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:90%"></div></div>
+          
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-head">
+            <span class="proj-name">UDN Video 1<span class="proj-id">SMS-2026-041</span></span>
             <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Script Drafted · due Aug 14</span> <span class="pp-chip pp-chip-overdue">18 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNLQS7VTM" target="_blank" rel="noopener">UDN Video 1 <span class="proj-link-icon">↗</span></a>
+            <span class="proj-name">Innovation Lecture<span class="proj-id">SMS-2026-076</span></span>
             <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span> <span class="proj-src-tag">Upcoming</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNV3HKQU9" target="_blank" rel="noopener">UDN Video 2 <span class="proj-link-icon">↗</span></a>
+            <span class="proj-name">OMDA OCHE Video<span class="proj-id">SMS-2026-054</span></span>
             <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BNT5LK8PL" target="_blank" rel="noopener">UDN Video 3 <span class="proj-link-icon">↗</span></a>
+            <span class="proj-name">UDN Video 2<span class="proj-id">SMS-2026-042</span></span>
             <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
           <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQXSDL2E8" target="_blank" rel="noopener">Aggarwal Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">33 / 33 done · 100%</span>
+            <span class="proj-name">UDN Video 3<span class="proj-id">SMS-2026-043</span></span>
+            <span class="proj-frac">0 / 42 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Color Correction Complete and Approved · due Aug 14</span> <span class="pp-chip pp-chip-overdue">15 overdue</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHMT9Q1K4" target="_blank" rel="noopener">Bladder Basics Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">28 / 28 done · 100%</span>
+            <span class="proj-name">Health Policy Forum: In Conversation (Podcast)<span class="proj-id">SMS-2026-094</span></span>
+            <span class="proj-frac">0 / 28 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-next">Next: Shoot Scheduled with Client · due Oct 30</span> <span class="pp-chip pp-chip-overdue">2 overdue</span> <span class="proj-src-tag">Upcoming</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0B07L23HRQ" target="_blank" rel="noopener">CME Promotion <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">37 / 37 done · 100%</span>
+            <span class="proj-name">CCT Course 2 Flipped-Classroom Video Series<span class="proj-id">SMS-2026-052</span></span>
+            <span class="proj-frac">0 / 35 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AJ250FYF8" target="_blank" rel="noopener">EM Podcast EP 1 <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">15 / 15 done · 100%</span>
+            <span class="proj-name">LEAP Course Redesign<span class="proj-id">SMS-2026-056</span></span>
+            <span class="proj-frac">0 / 35 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BQCSHKA0H" target="_blank" rel="noopener">EM Podcast EP 2 <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">15 / 15 done · 100%</span>
+            <span class="proj-name">Microlearning Videos: Transitions to Clerkships<span class="proj-id">SMS-2026-005</span></span>
+            <span class="proj-frac">0 / 35 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-src-tag">Upcoming</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BR597S0P2" target="_blank" rel="noopener">EM Podcast EP 3 <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">15 / 15 done · 100%</span>
+            <span class="proj-name">OMSW Overview<span class="proj-id">SMS-2026-013</span></span>
+            <span class="proj-frac">0 / 35 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-src-tag">On Hold</span></div>
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0AQCQNFU1M" target="_blank" rel="noopener">Gardner Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">28 / 28 done · 100%</span>
+            <span class="proj-name">Pitt Bioethics Podcast Series<span class="proj-id">SMS-2026-053</span></span>
+            <span class="proj-frac">0 / 28 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          
         </div>
         <div class="proj-row">
           <div class="proj-row-head">
-            <a class="proj-name proj-name-link" href="https://stanford.enterprise.slack.com/lists/T04F92C66/F0BHPQRDTC1" target="_blank" rel="noopener">Thinking Habits Podcast <span class="proj-link-icon">↗</span></a>
-            <span class="proj-frac">28 / 28 done · 100%</span>
+            <span class="proj-name">ROVER Animation<span class="proj-id">SMS-2026-019</span></span>
+            <span class="proj-frac">0 / 35 done · 0%</span>
           </div>
-          <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+          <div class="proj-bar-track"><div class="proj-bar-fill partial" style="width:0%"></div></div>
+          <div class="proj-row-sub"><span class="proj-src-tag">On Hold</span></div>
         </div>
-        <a class="proj-more-link" href="project-progress.html">See full breakdown by status, with completed/open counts →</a>
+        <a class="proj-more-link" href="project-progress.html">See full breakdown by status →</a><a class="proj-more-link" href="project-trackers.html" style="margin-left:16px;">How to use your project tracker →</a>
 <!-- /BUILD:PROJECT_SUMMARY -->
     </div>
   </div>
@@ -583,10 +573,10 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
     <div class="dash-card-header">
       <div class="dash-card-title">
         Studio, EdTech &amp; Internal Projects
-        <span class="source-pill source-local">Registry</span>
+        <span class="source-pill source-local">Master tracker</span>
       </div>
       <span class="dash-card-meta"><!-- BUILD:REGISTRY_META -->
-22 project(s) — framework, not yet database-backed
+22 open project(s) · from the Studio Master Production Tracker
 <!-- /BUILD:REGISTRY_META --></span>
     </div>
     <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;">
@@ -595,12 +585,36 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
         <div>
 <!-- BUILD:REGISTRY_STUDIO -->
         <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">CME Promo</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+          <span style="font-size:12px; color:var(--ink);">EM Podcast<span class="proj-id">SMS-2026-007</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Same as &quot;Emergency Medicine Podcast&quot; in the Production Archive Status table on the Backups page (confirmed by Adam 2026-08-07).">
-          <span style="font-size:12px; color:var(--ink);">EM Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Loaded Podcast<span class="proj-id">SMS-2026-051</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">OMDA OCHE Video<span class="proj-id">SMS-2026-054</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">OMSW Overview<span class="proj-id">SMS-2026-013</span></span>
+          <span class="source-pill source-none" style="font-size:9px;">On Hold</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Pitt Bioethics Podcast Series<span class="proj-id">SMS-2026-053</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Psychosis Podcast<span class="proj-id">SMS-2026-050</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">ROVER Animation<span class="proj-id">SMS-2026-019</span></span>
+          <span class="source-pill source-none" style="font-size:9px;">On Hold</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Zoe Podcast<span class="proj-id">SMS-2026-025</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
 <!-- /BUILD:REGISTRY_STUDIO -->
         </div>
@@ -609,21 +623,57 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
         <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-bottom:10px;">Edtech Projects</div>
         <div>
 <!-- BUILD:REGISTRY_EDTECH -->
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Same as &quot;Elevate Production Workflow&quot; in the Slack tracker / Dashboard Project Status card.">
-          <span style="font-size:12px; color:var(--ink);">Elevate</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">CCT Course 2 Flipped-Classroom Video Series<span class="proj-id">SMS-2026-052</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
         <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">IDD</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+          <span style="font-size:12px; color:var(--ink);">Elevate Production Workflow<span class="proj-id">SMS-2026-020</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
         <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">NeoNarratives</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+          <span style="font-size:12px; color:var(--ink);">IDD Production Workflow<span class="proj-id">SMS-2026-023</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Umbrella project — tracked day-to-day via the UDN Video 1/2/3 Slack Lists on the Dashboard Project Status card.">
-          <span style="font-size:12px; color:var(--ink);">UDN</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">LEAP Course Redesign<span class="proj-id">SMS-2026-056</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Neo Narratives Ep1<span class="proj-id">SMS-2026-044</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Neo Narratives Ep2<span class="proj-id">SMS-2026-045</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Neo Narratives Ep3<span class="proj-id">SMS-2026-046</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Neo-Narratives Season 2<span class="proj-id">SMS-2026-047</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">Path Cap Production<span class="proj-id">SMS-2026-009</span></span>
+          <span class="source-pill source-none" style="font-size:9px;">Stalled</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">UDN Course<span class="proj-id">SMS-2026-040</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">UDN Video 1<span class="proj-id">SMS-2026-041</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">UDN Video 2<span class="proj-id">SMS-2026-042</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:12px; color:var(--ink);">UDN Video 3<span class="proj-id">SMS-2026-043</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
 <!-- /BUILD:REGISTRY_EDTECH -->
         </div>
@@ -632,69 +682,9 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
         <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-bottom:10px;">Internal Projects</div>
         <div>
 <!-- BUILD:REGISTRY_INTERNAL -->
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
-          <span style="font-size:12px; color:var(--ink);">Aggarwal Podcast</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
-          <span style="font-size:12px; color:var(--ink);">Bladder Basics Podcast</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
-        </div>
         <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Design Thinking Course Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Edtech Studio Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
-          <span style="font-size:12px; color:var(--ink);">Gardner Podcast</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">RMK Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">ROVER Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Sainani Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Salmi Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Singh Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card. (Adam wrote &quot;Studio Promotion Video&quot; — confirmed as the same project, normalized to match the existing tracked name.)">
-          <span style="font-size:12px; color:var(--ink);">Studio Promotional Video</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Confirmed same as the &quot;Studio Look and Style Guide&quot; category in the Studio Sub-Projects tracker.">
-          <span style="font-size:12px; color:var(--ink);">Studio Style Guide</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Already on the Dashboard Project Status card.">
-          <span style="font-size:12px; color:var(--ink);">TGD Podcast</span>
-          <span class="source-pill source-slack" style="font-size:9px;">Slack</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Teggin Summers Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--ink);">Thinking Habits Explainer</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid var(--border);" title="Slack List: &quot;Thinking Habits Podcast Task Tracker&quot;.">
-          <span style="font-size:12px; color:var(--ink);">Thinking Habits Podcast</span>
-          <span class="source-pill source-none" style="font-size:9px;">Not linked</span>
+          <span style="font-size:12px; color:var(--ink);">Studio Promotional Video<span class="proj-id">SMS-2026-010</span></span>
+          <span class="source-pill source-sheets" style="font-size:9px;">Active</span>
         </div>
 <!-- /BUILD:REGISTRY_INTERNAL -->
         </div>
@@ -855,9 +845,9 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
     <span>✅ <strong>All data on this page is real</strong> — nothing here is sample or placeholder.</span>
     <span class="data-notice-pills">
       <span class="source-pill source-podio">Podio</span>
-      <span class="source-pill source-slack">Slack</span>
+      <span class="source-pill source-sheets">Shoot trackers</span>
       <span class="source-pill" style="background:var(--accent-light); color:var(--accent);">Outlook</span>
-      <span class="source-pill source-local">Registry</span>
+      <span class="source-pill source-local">Master tracker</span>
     </span>
     <a href="#data-sources" class="data-notice-link">Details below ↓</a>
   </div>
@@ -866,7 +856,7 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
   <div class="dash-card" id="data-sources" style="margin-bottom:0;">
     <div class="dash-card-header">
       <div class="dash-card-title">Connect Live Data Sources</div>
-      <span class="dash-card-meta">Slack: done · Podio: done · Outlook: done</span>
+      <span class="dash-card-meta">Shoot trackers: done · Podio: done · Outlook: done</span>
     </div>
     <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px;">
       <div style="background:var(--podio-light); border-radius:var(--radius); padding:20px;">
@@ -875,9 +865,9 @@ Next 6 event(s) · synced Nov 2, 2026 7:20 AM
         <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: on-demand (re-run build_dashboard.py)</div>
       </div>
       <div style="background:var(--slack-light); border-radius:var(--radius); padding:20px;">
-        <div style="font-size:13px; font-weight:700; color:var(--slack); margin-bottom:8px;">✅ Slack — connected via weekly export</div>
-        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Project Status is generated from <code>project_progress_master.csv</code>, a snapshot of the <code>Production_Task_Trackers_Master</code> Sheet's Summary tab; Studio Sub-Projects comes from a manually-downloaded Slack Lists export in <code>Continuously Updated CSVs/</code>. Both run through <code>build_dashboard.py</code>. Not live/real-time — refresh by re-running the script after each new export.</div>
-        <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: weekly (manual)</div>
+        <div style="font-size:13px; font-weight:700; color:var(--green); margin-bottom:8px;">✅ Shoot trackers — connected</div>
+        <div style="font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Project Status reads each project's Google Sheet shoot tracker (collected twice a day on weekdays by the Studio Master Production Tracker), and the project list comes from that master tracker. Slack Lists task trackers were retired on Nov 3, 2026. A project with no tracker yet shows its last Slack numbers, labelled as such. Studio Sub-Projects is still a Slack Lists export.</div>
+        <div style="font-size:11px; color:var(--ink-soft);">Refresh cadence: trackers read twice daily (weekdays); this page rebuilds weekly</div>
       </div>
       <div style="background:var(--accent-light); border-radius:var(--radius); padding:20px;">
         <div style="font-size:13px; font-weight:700; color:var(--accent); margin-bottom:8px;">✅ Outlook — connected via public ICS feed</div>
