@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+// Lightweight draft-access gate — NOT real security (visible in page source
+// to anyone who looks), just a soft deterrent against casual link-sharing
+// while this is a public draft. Placed first in <head> so it blocks
+// rendering (via the synchronous prompt()) before any real content parses.
+(function () {
+  var PASSWORD = "EdtechPortal";
+  var KEY = "edtech-portal-auth";
+  if (sessionStorage.getItem(KEY) === "1") return;
+  var attempt = prompt("This is a private draft. Enter the password to continue:");
+  var tries = 0;
+  while (attempt !== PASSWORD && tries < 2) {
+    attempt = prompt("Incorrect — try again:");
+    tries++;
+  }
+  if (attempt === PASSWORD) {
+    sessionStorage.setItem(KEY, "1");
+  } else {
+    document.documentElement.innerHTML =
+      '<body style="font-family:sans-serif; padding:80px 20px; text-align:center; color:#8C1515;">' +
+      '<h1>Access Restricted</h1><p>This is a private draft site.</p></body>';
+    throw new Error("Access denied");
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Trackers — Production Team Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-text">
+        <span class="institution">Stanford School of Medicine</span>
+        <span class="dept">Production Team Portal</span>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">Dashboard</a>
+      <a href="project-progress.html" class="nav-tab">Project Progress</a>
+      <a href="project-trackers.html" class="nav-tab active">Project Trackers</a>
+      <a href="training.html" class="nav-tab">Training &amp; Roles</a>
+      <a href="ingest.html" class="nav-tab">Ingest</a>
+      <a href="backups.html" class="nav-tab">Backups</a>
+      <a href="production-roles.html" class="nav-tab">Production Lead Roles</a>
+      <a href="slack-workflow.html" class="nav-tab">Slack Workflow</a>
+      <a href="sidus-installation.html" class="nav-tab">Sidus Installation</a>
+      <a href="resources.html" class="nav-tab">Resources</a>
+      <!-- Forms tab hidden for now (2026-08-06) — forms.html still exists, just unlinked from nav -->
+    </nav>
+    <div class="header-right">
+      <span class="live-dot">Trackers + Podio + Outlook live</span>
+      <span class="badge">Nov 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">How-to</p>
+      <h1>Project <em>trackers.</em></h1>
+      <p class="hero-desc">Every project has its own Google Sheet checklist, from scheduling to archiving. This page covers how to use it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Hand-written page (not generated), added 2026-11-03 when Slack Lists task trackers
+     were replaced by Google Sheet shoot trackers. Public site: never put a tracker URL here;
+     each tracker's link is pinned in its project's Slack channel. -->
+<div class="main">
+
+  <div class="dash-card" style="margin-bottom:20px;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Find your tracker</div>
+    </div>
+    <div class="howto-callout">
+      The link is <strong>pinned in your project's Slack channel</strong>. Open it while you're signed in to Google with your
+      <strong>Stanford account</strong>, so the tracker knows who ticked what. Can't open it? Ask Adam for access.
+    </div>
+  </div>
+
+  <div class="howto-grid" style="margin-bottom:20px;">
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">Day to day</div>
+      </div>
+      <ol class="howto-steps">
+        <li><strong>Tick Done</strong> when a task is finished. <span class="howto-kbd">Done on</span> and <span class="howto-kbd">Done by</span> fill in automatically. Untick it if you ticked it by mistake.</li>
+        <li><strong>Set the Owner:</strong> type the name of whoever is doing the task.</li>
+        <li><strong>Adjust Start and Due / End</strong> if the plan changes. They're pre-filled from the shoot and delivery dates, and you can type over them. A red Due / End means it falls before Start.</li>
+        <li><strong>Use Notes and Link</strong> for anything the next person needs, like a quick note, a folder, or a cut to review.</li>
+        <li><strong>Check the Timeline tab</strong> for a Gantt view of the whole project. It updates itself, so change dates on the Tracker tab.</li>
+      </ol>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">Good to know</div>
+      </div>
+      <ul class="howto-list">
+        <li><strong>See a "Filled in automatically" warning?</strong> That's OK. You clicked a cell the tracker fills in for you (like Status or Done by). It's only a warning: click <span class="howto-kbd">OK</span> to carry on, or <span class="howto-kbd">Cancel</span> to leave it alone.</li>
+        <li><strong>Slack Lists are retired.</strong> Please don't update the old Slack List trackers. The Google Sheet is the only tracker now.</li>
+        <li><strong>Progress shows up on the portal.</strong> The <a href="project-progress.html" style="color:var(--cardinal);">Project Progress</a> page reads every tracker twice a day on weekdays.</li>
+        <li><strong>Need something bigger?</strong> For a new project, a missing task, or a change to how the tracker is set up, ask Adam.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dash-card" style="margin-bottom:0;">
+    <div class="dash-card-header">
+      <div class="dash-card-title">Please don't</div>
+      <span class="dash-card-meta">These break the automatic progress reading</span>
+    </div>
+    <ul class="howto-list dont">
+      <li><strong>Rename, move or delete the tracker file.</strong></li>
+      <li><strong>Rename, delete or reorder its tabs</strong> (Tracker, Timeline, Deliverables &amp; specs).</li>
+      <li><strong>Delete task rows or make your own copy</strong> to work in. Keep one tracker per project.</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Stanford School of Medicine</strong> · Production Team Portal · Internal Use Only
+</footer>
+
+</body>
+</html>
